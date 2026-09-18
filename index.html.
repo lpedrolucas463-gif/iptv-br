@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPTV BR</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #101827;
+  color: white;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.card {
+  background: #1d293b;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 15px;
+}
+
+h1 {
+  color: #22c55e;
+  text-align: center;
+}
+
+h2 {
+  color: #38bdf8;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: #22c55e;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #cbd5e1;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>IPTV BR</h1>
+
+<div class="card">
+<h2>Bem-vindo ao IPTV BR</h2>
+<p>Seu espaço para organizar planos, clientes e conteúdos autorizados.</p>
+</div>
+
+<div class="card">
+<h2>Planos</h2>
+
+<p><strong>Plano Básico</strong></p>
+<p>Valor: R$ 19,90 por mês</p>
+<button class="btn" onclick="escolherPlano('Básico')">
+Escolher plano
+</button>
+
+<hr>
+
+<p><strong>Plano Premium</strong></p>
+<p>Valor: R$ 29,90 por mês</p>
+<button class="btn" onclick="escolherPlano('Premium')">
+Escolher plano
+</button>
+</div>
+
+<div class="card">
+<h2>Cadastro de cliente</h2>
+
+<input type="text" id="nome" placeholder="Nome completo">
+<input type="tel" id="telefone" placeholder="Telefone">
+
+<select id="plano">
+<option value="">Selecione um plano</option>
+<option value="Básico">Plano Básico</option>
+<option value="Premium">Plano Premium</option>
+</select>
+
+<button class="btn" onclick="cadastrarCliente()">
+Cadastrar cliente
+</button>
+
+<p id="mensagem"></p>
+</div>
+
+<div class="card">
+<h2>Contato</h2>
+<p>WhatsApp: (00) 00000-0000</p>
+<p>Email: contato@iptvbr.com</p>
+</div>
+
+<footer>
+© 2026 IPTV BR - Conteúdo autorizado
+</footer>
+
+</div>
+
+<script>
+function escolherPlano(planoEscolhido) {
+  document.getElementById("plano").value = planoEscolhido;
+  document.getElementById("mensagem").innerText =
+    "Plano " + planoEscolhido + " selecionado.";
+}
+
+function cadastrarCliente() {
+  const nome = document.getElementById("nome").value;
+  const telefone = document.getElementById("telefone").value;
+  const plano = document.getElementById("plano").value;
+  const mensagem = document.getElementById("mensagem");
+
+  if (nome === "" || telefone === "" || plano === "") {
+    mensagem.innerText = "Preencha todos os campos.";
+    mensagem.style.color = "#f87171";
+    return;
+  }
+
+  mensagem.innerText =
+    "Cliente " + nome + " cadastrado no plano " + plano + ".";
+
+  mensagem.style.color = "#22c55e";
+}
+</script>
+
+</body>
+</html>

@@ -61,7 +61,6 @@ select {
   background: #22c55e;
   color: white;
   text-align: center;
-  text-decoration: none;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -85,6 +84,22 @@ select {
   font-weight: bold;
 }
 
+.cliente {
+  background: #27364b;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.excluir {
+  background: #ef4444;
+  padding: 8px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 footer {
   text-align: center;
   margin-top: 30px;
@@ -97,26 +112,15 @@ footer {
 
 <div class="container">
 
-  <!-- TELA DE LOGIN -->
+  <!-- LOGIN -->
   <div class="card" id="telaLogin">
     <h1>IPTV BR</h1>
     <h2>Login do painel</h2>
 
-    <input
-      type="text"
-      id="usuario"
-      placeholder="Usuário"
-    >
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
 
-    <input
-      type="password"
-      id="senha"
-      placeholder="Senha"
-    >
-
-    <button class="btn" onclick="entrar()">
-      Entrar
-    </button>
+    <button class="btn" onclick="entrar()">Entrar</button>
 
     <p id="loginMensagem"></p>
   </div>
@@ -128,11 +132,10 @@ footer {
 
     <div class="card">
       <h2>Bem-vindo ao IPTV BR</h2>
-      <p>
-        Seu espaço para organizar planos, clientes e conteúdos autorizados.
-      </p>
+      <p>Organize planos e clientes de conteúdos autorizados.</p>
     </div>
 
+    <!-- PLANOS -->
     <div class="card">
       <h2>Planos</h2>
 
@@ -153,20 +156,12 @@ footer {
       </button>
     </div>
 
+    <!-- CADASTRO -->
     <div class="card">
       <h2>Cadastro de cliente</h2>
 
-      <input
-        type="text"
-        id="nome"
-        placeholder="Nome completo"
-      >
-
-      <input
-        type="tel"
-        id="telefone"
-        placeholder="Telefone"
-      >
+      <input type="text" id="nome" placeholder="Nome completo">
+      <input type="tel" id="telefone" placeholder="Telefone">
 
       <select id="plano">
         <option value="">Selecione um plano</option>
@@ -181,22 +176,26 @@ footer {
       <p id="mensagem"></p>
     </div>
 
+    <!-- LISTA DE CLIENTES -->
+    <div class="card">
+      <h2>Clientes cadastrados</h2>
+      <div id="listaClientes"></div>
+    </div>
+
+    <!-- CONTATO -->
     <div class="card">
       <h2>Contato</h2>
       <p>WhatsApp: (00) 00000-0000</p>
       <p>Email: contato@iptvbr.com</p>
     </div>
 
-    <button class="btn logout" onclick="sair()">
-      Sair
-    </button>
+    <button class="btn logout" onclick="sair()">Sair</button>
 
     <footer>
       © 2026 IPTV BR - Conteúdo autorizado
     </footer>
 
   </div>
-
 </div>
 
 <script>
@@ -208,6 +207,8 @@ function entrar() {
   if (usuario === "admin" && senha === "1234") {
     document.getElementById("telaLogin").classList.add("hidden");
     document.getElementById("painel").classList.remove("hidden");
+
+    mostrarClientes();
   } else {
     mensagem.innerText = "Usuário ou senha incorretos.";
     mensagem.style.color = "#f87171";
@@ -233,8 +234,8 @@ function escolherPlano(planoEscolhido) {
 }
 
 function cadastrarCliente() {
-  const nome = document.getElementById("nome").value;
-  const telefone = document.getElementById("telefone").value;
+  const nome = document.getElementById("nome").value.trim();
+  const telefone = document.getElementById("telefone").value.trim();
   const plano = document.getElementById("plano").value;
   const mensagem = document.getElementById("mensagem");
 
@@ -244,10 +245,81 @@ function cadastrarCliente() {
     return;
   }
 
+  const clientes = JSON.parse(
+    localStorage.getItem("clientesIPTV") || "[]"
+  );
+
+  const novoCliente = {
+    nome: nome,
+    telefone: telefone,
+    plano: plano,
+    data: new Date().toLocaleString("pt-BR")
+  };
+
+  clientes.push(novoCliente);
+
+  localStorage.setItem(
+    "clientesIPTV",
+    JSON.stringify(clientes)
+  );
+
   mensagem.innerText =
-    "Cliente " + nome + " cadastrado no plano " + plano + ".";
+    "Cliente " + nome + " salvo com sucesso!";
 
   mensagem.style.color = "#22c55e";
+
+  document.getElementById("nome").value = "";
+  document.getElementById("telefone").value = "";
+  document.getElementById("plano").value = "";
+
+  mostrarClientes();
+}
+
+function mostrarClientes() {
+  const lista = document.getElementById("listaClientes");
+
+  const clientes = JSON.parse(
+    localStorage.getItem("clientesIPTV") || "[]"
+  );
+
+  lista.innerHTML = "";
+
+  if (clientes.length === 0) {
+    lista.innerHTML = "<p>Nenhum cliente cadastrado.</p>";
+    return;
+  }
+
+  clientes.forEach(function(cliente, indice) {
+    const div = document.createElement("div");
+    div.className = "cliente";
+
+    div.innerHTML = `
+      <strong>${cliente.nome}</strong><br>
+      Telefone: ${cliente.telefone}<br>
+      Plano: ${cliente.plano}<br>
+      Data: ${cliente.data}<br><br>
+      <button class="excluir" onclick="excluirCliente(${indice})">
+        Excluir
+      </button>
+    `;
+
+    lista.appendChild(div);
+  });
+}
+
+function excluirCliente(indice) {
+  const clientes = JSON.parse(
+    localStorage.getItem("clientesIPTV") || "[]"
+  );
+
+  clientes.splice(indice, 1);
+
+  localStorage.setItem(
+    "clientesIPTV",
+    JSON.stringify(clientes)
+  );
+
+  mostrarClientes();
 }
 </script>
 

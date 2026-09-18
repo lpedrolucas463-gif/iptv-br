@@ -3,1112 +3,1755 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IPTV BR</title>
+
+<title>IPTV BR - Painel</title>
 
 <style>
+
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  background: #111;
-  color: white;
+    background: #0b0f16;
+    color: #fff;
 }
 
-.hidden {
-  display: none !important;
-}
-
-.container {
-  width: 92%;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.card {
-  background: #1d1d1d;
-  border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
+/* ================= LOGIN ================= */
 
 .login-page {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at top, #202838 0%, #0b0f16 55%);
 }
 
 .login-box {
-  width: 92%;
-  max-width: 400px;
-  background: #1d1d1d;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
+    width: 92%;
+    max-width: 390px;
+    background: #121824;
+    border: 1px solid #252e3d;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,.45);
 }
 
-.logo {
-  margin-bottom: 20px;
-  text-align: center;
+.login-logo img {
+    width: 180px;
+    max-width: 80%;
+    margin-bottom: 20px;
 }
 
-.logo img {
-  width: 180px;
-  max-width: 80%;
-  height: auto;
+.login-box h2 {
+    margin-bottom: 20px;
 }
 
-input,
-select {
-  width: 100%;
-  padding: 13px;
-  margin: 7px 0;
-  border: none;
-  border-radius: 8px;
+.login-box input {
+    width: 100%;
+    padding: 14px;
+    margin: 7px 0;
+    border-radius: 10px;
+    border: 1px solid #303b4d;
+    background: #0d131e;
+    color: white;
+    outline: none;
 }
 
-button {
-  border: none;
-  border-radius: 8px;
-  padding: 12px 16px;
-  background: #e50914;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 5px;
+.login-box input:focus {
+    border-color: #e50914;
 }
 
-button:hover {
-  opacity: .85;
+.login-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    border: 0;
+    border-radius: 10px;
+    background: #e50914;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-}
-
-.header button {
-  margin: 0;
-}
-
-.plans,
-.categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
-}
-
-.plan {
-  background: #292929;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-}
-
-.category {
-  background: #292929;
-  border-radius: 12px;
-  padding: 18px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.category:hover {
-  background: #3a3a3a;
-}
-
-.client {
-  background: #292929;
-  padding: 15px;
-  margin-top: 12px;
-  border-radius: 10px;
-}
-
-.btn-danger {
-  background: #b00020;
-}
-
-.message {
-  margin-top: 10px;
-  color: #4caf50;
+.login-button:hover {
+    background: #ff1824;
 }
 
 .error {
-  color: #ff4444;
+    color: #ff5964;
+    margin-top: 12px;
+}
+
+/* ================= GERAL ================= */
+
+.hidden {
+    display: none !important;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 245px;
+    background: #101620;
+    border-right: 1px solid #222b39;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 22px 15px;
+    z-index: 10;
+}
+
+.brand {
+    text-align: center;
+    padding: 5px 0 25px;
+    border-bottom: 1px solid #252e3a;
+    margin-bottom: 20px;
+}
+
+.brand img {
+    width: 150px;
+    max-width: 90%;
+}
+
+.menu-title {
+    color: #68758a;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 18px 10px 8px;
+    text-transform: uppercase;
+}
+
+.menu button {
+    width: 100%;
+    text-align: left;
+    padding: 13px;
+    margin: 4px 0;
+    background: transparent;
+    color: #aeb8c8;
+    border: 0;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu button:hover,
+.menu button.active {
+    background: #1d2634;
+    color: white;
+}
+
+.menu button.active {
+    border-left: 3px solid #e50914;
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    right: 15px;
+}
+
+.logout button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #3b2630;
+    border-radius: 9px;
+    background: #1a1217;
+    color: #ff6873;
+    cursor: pointer;
+}
+
+/* ================= CONTEÚDO ================= */
+
+.main {
+    margin-left: 245px;
+    width: calc(100% - 245px);
+    padding: 25px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.topbar h1 {
+    font-size: 25px;
+}
+
+.topbar p {
+    color: #78869a;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.admin {
+    background: #151d29;
+    border: 1px solid #273243;
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #c6ceda;
+}
+
+/* ================= SEÇÕES ================= */
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* ================= CARDS ================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat {
+    background: #121824;
+    border: 1px solid #222c3b;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.stat-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.stat-title {
+    color: #7d899a;
+    font-size: 13px;
+}
+
+.stat-number {
+    font-size: 27px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+/* ================= CARDS GRANDES ================= */
+
+.panel {
+    background: #121824;
+    border: 1px solid #222c3b;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.panel-header h2 {
+    font-size: 18px;
+}
+
+/* ================= BOTÕES ================= */
+
+.btn {
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #e50914;
+}
+
+.btn-primary:hover {
+    background: #ff1824;
+}
+
+.btn-secondary {
+    background: #273243;
+}
+
+.btn-danger {
+    background: #9f1825;
+}
+
+.btn-official {
+    background: #e50914;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-small {
+    padding: 8px 11px;
+    font-size: 12px;
+}
+
+/* ================= PLANOS ================= */
+
+.plans {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.plan {
+    background: #151d29;
+    border: 1px solid #293445;
+    border-radius: 14px;
+    padding: 22px;
+    position: relative;
+}
+
+.plan.premium {
+    border-color: #e50914;
+}
+
+.plan h3 {
+    font-size: 19px;
+}
+
+.plan .price {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.plan p {
+    color: #8490a1;
+    margin-bottom: 18px;
+}
+
+/* ================= CANAIS ================= */
+
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
 }
 
 .channel {
-  background: #222;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 10px;
+    background: #151d29;
+    border: 1px solid #293445;
+    border-radius: 12px;
+    padding: 17px;
 }
 
-.channel-item {
-  background: #292929;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+.channel h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
 }
 
-.channel-item button {
-  margin: 0;
+.channel p {
+    color: #7e8a9c;
+    font-size: 12px;
+    margin-bottom: 14px;
 }
 
-.btn-globo {
-  background: #e50914;
+/* ================= CATEGORIAS ================= */
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
-.btn-premiere {
-  background: #c90000;
+.category-button {
+    border: 1px solid #2b3748;
+    background: #151d29;
+    color: #bdc6d3;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.info {
-  color: #bbb;
-  font-size: 14px;
-  margin-top: 8px;
+.category-button:hover,
+.category-button.selected {
+    background: #e50914;
+    border-color: #e50914;
+    color: white;
 }
+
+/* ================= FORMULÁRIO ================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: #8995a6;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    background: #0d131e;
+    border: 1px solid #2c3748;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #e50914;
+}
+
+.form-actions {
+    margin-top: 15px;
+}
+
+/* ================= CLIENTES ================= */
+
+.search {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    background: #0d131e;
+    color: white;
+    border: 1px solid #2c3748;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.client {
+    background: #151d29;
+    border: 1px solid #293445;
+    border-radius: 12px;
+    padding: 17px;
+    margin-bottom: 10px;
+}
+
+.client-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.client-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.badge {
+    background: #243044;
+    color: #b9c4d3;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.client-info {
+    color: #8490a1;
+    font-size: 13px;
+    margin-top: 9px;
+}
+
+.client-actions {
+    margin-top: 12px;
+}
+
+/* ================= RESPONSIVO ================= */
+
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 900px) {
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .channel-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .mobile-menu {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .mobile-menu button {
+        background: #1b2432;
+        color: white;
+        border: 1px solid #2b3748;
+        padding: 10px 13px;
+        border-radius: 8px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .plans,
+    .channel-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .admin {
+        font-size: 12px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
 
 <div id="loginPage" class="login-page">
 
-  <div class="login-box">
+    <div class="login-box">
 
-    <div class="logo">
-      <img
-        src="arquivo_00000000fecc820eacac196cdea695a3.png"
-        alt="IPTV BR">
+        <div class="login-logo">
+            <img
+                src="arquivo_00000000fecc820eacac196cdea695a3.png"
+                alt="IPTV BR">
+        </div>
+
+        <h2>Painel IPTV BR</h2>
+
+        <br>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Usuário">
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Senha">
+
+        <button
+            class="login-button"
+            onclick="login()">
+            Entrar no painel
+        </button>
+
+        <p
+            id="loginMessage"
+            class="error">
+        </p>
+
     </div>
-
-    <h2>Entrar</h2>
-
-    <input
-      type="text"
-      id="username"
-      placeholder="Usuário">
-
-    <input
-      type="password"
-      id="password"
-      placeholder="Senha">
-
-    <button onclick="login()">Entrar</button>
-
-    <p id="loginMessage" class="error"></p>
-
-  </div>
 
 </div>
 
 
-<!-- PAINEL -->
+<!-- ================= APLICATIVO ================= -->
 
-<div id="panelPage" class="hidden">
+<div id="app" class="app hidden">
 
-  <div class="container">
+    <!-- SIDEBAR -->
 
-    <div class="header">
+    <aside class="sidebar">
 
-      <h1>IPTV BR</h1>
+        <div class="brand">
 
-      <button onclick="logout()">Sair</button>
-
-    </div>
-
-
-    <!-- PLANOS -->
-
-    <div class="card">
-
-      <h2>💰 Planos</h2>
-
-      <br>
-
-      <div class="plans">
-
-        <div class="plan">
-
-          <h3>Básico</h3>
-
-          <br>
-
-          <p>Plano mensal</p>
-
-          <br>
-
-          <strong>R$ 25,00</strong>
+            <img
+                src="arquivo_00000000fecc820eacac196cdea695a3.png"
+                alt="IPTV BR">
 
         </div>
 
 
-        <div class="plan">
+        <div class="menu">
 
-          <h3>Premium</h3>
+            <div class="menu-title">
+                Principal
+            </div>
 
-          <br>
+            <button
+                class="active"
+                onclick="showSection('dashboard', this)">
+                📊 Dashboard
+            </button>
 
-          <p>Plano mensal</p>
+            <button
+                onclick="showSection('channels', this)">
+                📺 Canais
+            </button>
 
-          <br>
 
-          <strong>R$ 40,00</strong>
+            <div class="menu-title">
+                Gestão
+            </div>
+
+            <button
+                onclick="showSection('clients', this)">
+                👥 Clientes
+            </button>
+
+            <button
+                onclick="showSection('register', this)">
+                ➕ Novo cliente
+            </button>
+
+            <button
+                onclick="showSection('plans', this)">
+                💳 Planos
+            </button>
 
         </div>
 
-      </div>
 
-    </div>
+        <div class="logout">
 
+            <button onclick="logout()">
+                🚪 Sair
+            </button>
 
-    <!-- CATEGORIAS -->
-
-    <div class="card">
-
-      <h2>📺 Categorias de Canais</h2>
-
-      <br>
-
-      <div class="categories">
-
-        <div class="category"
-             onclick="showCategory('Esportes')">
-          ⚽<br>Esportes
         </div>
 
-        <div class="category"
-             onclick="showCategory('Filmes')">
-          🎬<br>Filmes
+    </aside>
+
+
+    <!-- CONTEÚDO -->
+
+    <main class="main">
+
+        <div class="mobile-menu">
+
+            <button onclick="toggleMobileMenu()">
+                ☰ Menu
+            </button>
+
         </div>
 
-        <div class="category"
-             onclick="showCategory('Series')">
-          📺<br>Séries
+
+        <div class="topbar">
+
+            <div>
+
+                <h1 id="pageTitle">
+                    Dashboard
+                </h1>
+
+                <p>
+                    Gerencie seu painel IPTV BR
+                </p>
+
+            </div>
+
+
+            <div class="admin">
+                👤 Administrador
+            </div>
+
         </div>
 
-        <div class="category"
-             onclick="showCategory('Noticias')">
-          📰<br>Notícias
-        </div>
 
-        <div class="category"
-             onclick="showCategory('Infantil')">
-          👶<br>Infantil
-        </div>
+        <!-- ================= DASHBOARD ================= -->
 
-        <div class="category"
-             onclick="showCategory('Musica')">
-          🎵<br>Música
-        </div>
+        <section
+            id="dashboard"
+            class="section active">
 
-        <div class="category"
-             onclick="showCategory('Internacionais')">
-          🌎<br>Internacionais
-        </div>
+            <div class="stats">
 
-        <div class="category"
-             onclick="showCategory('Entretenimento')">
-          🎭<br>Entretenimento
-        </div>
+                <div class="stat">
 
-        <div class="category"
-             onclick="showCategory('Culinaria')">
-          🍳<br>Culinária
-        </div>
+                    <div class="stat-icon">
+                        👥
+                    </div>
 
-        <div class="category"
-             onclick="showCategory('Tecnologia')">
-          💻<br>Tecnologia
-        </div>
+                    <div class="stat-title">
+                        Total de clientes
+                    </div>
 
-        <div class="category"
-             onclick="showCategory('Documentarios')">
-          🌿<br>Documentários
-        </div>
+                    <div
+                        id="totalClients"
+                        class="stat-number">
+                        0
+                    </div>
 
-        <div class="category"
-             onclick="showCategory('Religiosos')">
-          🙏<br>Religiosos
-        </div>
-
-        <div class="category"
-             onclick="showCategory('Educacao')">
-          🎓<br>Educação
-        </div>
-
-        <div class="category"
-             onclick="showCategory('Variedades')">
-          🏠<br>Variedades
-        </div>
-
-      </div>
-
-      <div id="categoryContent"></div>
-
-    </div>
+                </div>
 
 
-    <!-- CADASTRAR CLIENTE -->
+                <div class="stat">
 
-    <div class="card">
+                    <div class="stat-icon">
+                        ✅
+                    </div>
 
-      <h2>👤 Cadastrar Cliente</h2>
+                    <div class="stat-title">
+                        Clientes ativos
+                    </div>
 
-      <br>
+                    <div
+                        id="activeClients"
+                        class="stat-number">
+                        0
+                    </div>
 
-      <input
-        type="text"
-        id="clientName"
-        placeholder="Nome do cliente">
-
-      <input
-        type="text"
-        id="clientPhone"
-        placeholder="Telefone">
-
-      <select id="clientPlan">
-
-        <option value="Básico">Básico</option>
-
-        <option value="Premium">Premium</option>
-
-      </select>
-
-      <input
-        type="date"
-        id="clientDate">
-
-      <button onclick="addClient()">
-        Cadastrar cliente
-      </button>
-
-      <p id="clientMessage" class="message"></p>
-
-    </div>
+                </div>
 
 
-    <!-- CLIENTES -->
+                <div class="stat">
 
-    <div class="card">
+                    <div class="stat-icon">
+                        ⚠️
+                    </div>
 
-      <h2>👥 Clientes</h2>
+                    <div class="stat-title">
+                        Vencendo
+                    </div>
 
-      <div id="clientList"></div>
+                    <div
+                        id="expiringClients"
+                        class="stat-number">
+                        0
+                    </div>
 
-    </div>
+                </div>
 
-  </div>
+
+                <div class="stat">
+
+                    <div class="stat-icon">
+                        📡
+                    </div>
+
+                    <div class="stat-title">
+                        Canais
+                    </div>
+
+                    <div
+                        class="stat-number">
+                        20+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        👋 Bem-vindo ao painel
+                    </h2>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="showSectionByName('register')">
+                        + Novo cliente
+                    </button>
+
+                </div>
+
+                <p style="color:#8490a1; line-height:1.6;">
+                    Aqui você pode administrar clientes,
+                    visualizar planos e organizar os canais
+                    disponíveis no seu projeto.
+                </p>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        ⚡ Acesso rápido
+                    </h2>
+
+                </div>
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="showSectionByName('channels')">
+                    📺 Ver canais
+                </button>
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="showSectionByName('clients')">
+                    👥 Ver clientes
+                </button>
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="showSectionByName('plans')">
+                    💳 Ver planos
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CANAIS ================= -->
+
+        <section
+            id="channels"
+            class="section">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        📺 Central de canais
+                    </h2>
+
+                </div>
+
+
+                <div class="category-buttons">
+
+                    <button
+                        class="category-button selected"
+                        onclick="showChannelCategory('todos', this)">
+                        Todos
+                    </button>
+
+                    <button
+                        class="category-button"
+                        onclick="showChannelCategory('globo', this)">
+                        Globo
+                    </button>
+
+                    <button
+                        class="category-button"
+                        onclick="showChannelCategory('esportes', this)">
+                        Esportes
+                    </button>
+
+                    <button
+                        class="category-button"
+                        onclick="showChannelCategory('infantil', this)">
+                        Infantil
+                    </button>
+
+                    <button
+                        class="category-button"
+                        onclick="showChannelCategory('filmes', this)">
+                        Filmes
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="channelList"
+                    class="channel-grid">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CLIENTES ================= -->
+
+        <section
+            id="clients"
+            class="section">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        👥 Clientes
+                    </h2>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="showSectionByName('register')">
+                        + Cadastrar
+                    </button>
+
+                </div>
+
+
+                <input
+                    type="text"
+                    id="clientSearch"
+                    class="search"
+                    placeholder="🔎 Pesquisar cliente..."
+                    oninput="renderClients()">
+
+                <div id="clientList"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CADASTRO ================= -->
+
+        <section
+            id="register"
+            class="section">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        ➕ Cadastrar cliente
+                    </h2>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Nome do cliente
+                        </label>
+
+                        <input
+                            type="text"
+                            id="clientName"
+                            placeholder="Digite o nome">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Telefone
+                        </label>
+
+                        <input
+                            type="text"
+                            id="clientPhone"
+                            placeholder="(00) 00000-0000">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Plano
+                        </label>
+
+                        <select id="clientPlan">
+
+                            <option value="Básico">
+                                Básico — R$ 25,00
+                            </option>
+
+                            <option value="Premium">
+                                Premium — R$ 40,00
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Vencimento
+                        </label>
+
+                        <input
+                            type="date"
+                            id="clientDate">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="addClient()">
+                        Cadastrar cliente
+                    </button>
+
+                    <button
+                        class="btn btn-secondary"
+                        onclick="clearForm()">
+                        Limpar
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="clientMessage"
+                    style="margin-top:15px;">
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PLANOS ================= -->
+
+        <section
+            id="plans"
+            class="section">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        💳 Planos disponíveis
+                    </h2>
+
+                </div>
+
+
+                <div class="plans">
+
+                    <div class="plan">
+
+                        <h3>
+                            Básico
+                        </h3>
+
+                        <div class="price">
+                            R$ 25
+                        </div>
+
+                        <p>
+                            Plano mensal
+                        </p>
+
+                        <button
+                            class="btn btn-secondary">
+                            Plano básico
+                        </button>
+
+                    </div>
+
+
+                    <div class="plan premium">
+
+                        <h3>
+                            ⭐ Premium
+                        </h3>
+
+                        <div class="price">
+                            R$ 40
+                        </div>
+
+                        <p>
+                            Plano mensal premium
+                        </p>
+
+                        <button
+                            class="btn btn-primary">
+                            Plano premium
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
 
 </div>
 
 
 <script>
 
+/* ================= CONFIGURAÇÃO ================= */
+
 const USER = "admin";
 const PASS = "1234";
 
 let clients =
-JSON.parse(localStorage.getItem("iptvClients")) || [];
+    JSON.parse(localStorage.getItem("iptvClients")) || [];
 
 
-/* LOGIN */
+/* ================= LOGIN ================= */
 
 function login() {
 
-  const username =
-  document.getElementById("username").value.trim();
+    const username =
+        document.getElementById("username").value.trim();
 
-  const password =
-  document.getElementById("password").value;
+    const password =
+        document.getElementById("password").value;
 
-  const message =
-  document.getElementById("loginMessage");
+    const message =
+        document.getElementById("loginMessage");
 
-  if (username === USER && password === PASS) {
 
-    document
-    .getElementById("loginPage")
-    .classList.add("hidden");
+    if (username === USER && password === PASS) {
 
-    document
-    .getElementById("panelPage")
-    .classList.remove("hidden");
+        document
+            .getElementById("loginPage")
+            .classList.add("hidden");
 
-    message.textContent = "";
+        document
+            .getElementById("app")
+            .classList.remove("hidden");
 
-    renderClients();
+        message.textContent = "";
 
-  } else {
+        updateDashboard();
 
-    message.textContent =
-    "Usuário ou senha incorretos.";
+        renderClients();
 
-  }
+        showChannelCategory("todos");
+
+    } else {
+
+        message.textContent =
+            "Usuário ou senha incorretos.";
+
+    }
 
 }
 
 
-/* LOGOUT */
+/* ================= LOGOUT ================= */
 
 function logout() {
 
-  document
-  .getElementById("panelPage")
-  .classList.add("hidden");
+    document
+        .getElementById("app")
+        .classList.add("hidden");
 
-  document
-  .getElementById("loginPage")
-  .classList.remove("hidden");
+    document
+        .getElementById("loginPage")
+        .classList.remove("hidden");
 
-  document.getElementById("username").value = "";
+    document.getElementById("username").value = "";
 
-  document.getElementById("password").value = "";
+    document.getElementById("password").value = "";
 
 }
 
 
-/* CADASTRAR CLIENTE */
+/* ================= NAVEGAÇÃO ================= */
+
+function showSection(sectionId, button) {
+
+    document
+        .querySelectorAll(".section")
+        .forEach(section => {
+            section.classList.remove("active");
+        });
+
+
+    document
+        .getElementById(sectionId)
+        .classList.add("active");
+
+
+    document
+        .querySelectorAll(".menu button")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+
+    const titles = {
+
+        dashboard: "Dashboard",
+
+        channels: "Canais",
+
+        clients: "Clientes",
+
+        register: "Novo cliente",
+
+        plans: "Planos"
+
+    };
+
+
+    document.getElementById("pageTitle").textContent =
+        titles[sectionId] || "Painel";
+
+
+    if (sectionId === "clients") {
+        renderClients();
+    }
+
+}
+
+
+function showSectionByName(sectionId) {
+
+    const button =
+        [...document.querySelectorAll(".menu button")]
+        .find(btn =>
+            btn.getAttribute("onclick") &&
+            btn.getAttribute("onclick").includes(
+                "'" + sectionId + "'"
+            )
+        );
+
+
+    showSection(sectionId, button);
+
+}
+
+
+/* ================= CLIENTES ================= */
 
 function addClient() {
 
-  const name =
-  document.getElementById("clientName").value.trim();
+    const name =
+        document.getElementById("clientName").value.trim();
 
-  const phone =
-  document.getElementById("clientPhone").value.trim();
+    const phone =
+        document.getElementById("clientPhone").value.trim();
 
-  const plan =
-  document.getElementById("clientPlan").value;
+    const plan =
+        document.getElementById("clientPlan").value;
 
-  const date =
-  document.getElementById("clientDate").value;
+    const date =
+        document.getElementById("clientDate").value;
 
-  const message =
-  document.getElementById("clientMessage");
+    const message =
+        document.getElementById("clientMessage");
 
 
-  if (!name || !phone || !date) {
+    if (!name || !phone || !date) {
 
-    message.className = "message error";
+        message.style.color = "#ff5964";
+
+        message.textContent =
+            "Preencha todos os campos.";
+
+        return;
+
+    }
+
+
+    const client = {
+
+        id: Date.now(),
+
+        name: name,
+
+        phone: phone,
+
+        plan: plan,
+
+        date: date
+
+    };
+
+
+    clients.push(client);
+
+
+    localStorage.setItem(
+        "iptvClients",
+        JSON.stringify(clients)
+    );
+
+
+    clearForm();
+
+
+    message.style.color = "#4caf50";
 
     message.textContent =
-    "Preencha todos os campos.";
-
-    return;
-
-  }
+        "Cliente cadastrado com sucesso!";
 
 
-  const client = {
+    updateDashboard();
 
-    id: Date.now(),
-
-    name: name,
-
-    phone: phone,
-
-    plan: plan,
-
-    date: date
-
-  };
-
-
-  clients.push(client);
-
-
-  localStorage.setItem(
-    "iptvClients",
-    JSON.stringify(clients)
-  );
-
-
-  document.getElementById("clientName").value = "";
-
-  document.getElementById("clientPhone").value = "";
-
-  document.getElementById("clientDate").value = "";
-
-
-  message.className = "message";
-
-  message.textContent =
-  "Cliente cadastrado com sucesso!";
-
-
-  renderClients();
+    renderClients();
 
 }
 
 
-/* EXCLUIR CLIENTE */
+function clearForm() {
+
+    document.getElementById("clientName").value = "";
+
+    document.getElementById("clientPhone").value = "";
+
+    document.getElementById("clientDate").value = "";
+
+}
+
 
 function deleteClient(id) {
 
-  if (!confirm("Deseja excluir este cliente?")) {
-
-    return;
-
-  }
+    if (!confirm("Deseja excluir este cliente?")) {
+        return;
+    }
 
 
-  clients =
-  clients.filter(client => client.id !== id);
+    clients =
+        clients.filter(client => client.id !== id);
 
 
-  localStorage.setItem(
-    "iptvClients",
-    JSON.stringify(clients)
-  );
+    localStorage.setItem(
+        "iptvClients",
+        JSON.stringify(clients)
+    );
 
 
-  renderClients();
+    renderClients();
+
+    updateDashboard();
 
 }
 
-
-/* MOSTRAR CLIENTES */
 
 function renderClients() {
 
-  const list =
-  document.getElementById("clientList");
+    const list =
+        document.getElementById("clientList");
+
+    const search =
+        document.getElementById("clientSearch");
 
 
-  if (clients.length === 0) {
-
-    list.innerHTML =
-    "<p>Nenhum cliente cadastrado.</p>";
-
-    return;
-
-  }
+    if (!list) {
+        return;
+    }
 
 
-  list.innerHTML = "";
+    const term =
+        search ? search.value.toLowerCase() : "";
 
 
-  clients.forEach(client => {
-
-    const div =
-    document.createElement("div");
-
-
-    div.className = "client";
+    const filtered =
+        clients.filter(client =>
+            client.name.toLowerCase().includes(term) ||
+            client.phone.toLowerCase().includes(term)
+        );
 
 
-    div.innerHTML = `
+    if (filtered.length === 0) {
 
-      <p>
-        <strong>Nome:</strong>
-        ${client.name}
-      </p>
+        list.innerHTML = `
+            <div class="client">
+                <p style="color:#8490a1;">
+                    Nenhum cliente encontrado.
+                </p>
+            </div>
+        `;
 
-      <p>
-        <strong>Telefone:</strong>
-        ${client.phone}
-      </p>
+        return;
 
-      <p>
-        <strong>Plano:</strong>
-        ${client.plan}
-      </p>
-
-      <p>
-        <strong>Vencimento:</strong>
-        ${client.date}
-      </p>
-
-      <button
-        class="btn-danger"
-        onclick="deleteClient(${client.id})">
-
-        Excluir cliente
-
-      </button>
-
-    `;
+    }
 
 
-    list.appendChild(div);
+    list.innerHTML = "";
 
-  });
+
+    filtered.forEach(client => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "client";
+
+
+        div.innerHTML = `
+
+            <div class="client-top">
+
+                <div class="client-name">
+                    👤 ${escapeHTML(client.name)}
+                </div>
+
+                <div class="badge">
+                    ${escapeHTML(client.plan)}
+                </div>
+
+            </div>
+
+            <div class="client-info">
+                📱 ${escapeHTML(client.phone)}
+            </div>
+
+            <div class="client-info">
+                📅 Vencimento: ${escapeHTML(client.date)}
+            </div>
+
+            <div class="client-actions">
+
+                <button
+                    class="btn btn-danger btn-small"
+                    onclick="deleteClient(${client.id})">
+                    Excluir
+                </button>
+
+            </div>
+
+        `;
+
+
+        list.appendChild(div);
+
+    });
 
 }
 
 
-/* CATEGORIAS */
+/* ================= DASHBOARD ================= */
 
-function showCategory(category) {
+function updateDashboard() {
 
-  const content =
-  document.getElementById("categoryContent");
-
-
-  const names = {
-
-    Esportes: "⚽ Esportes",
-    Filmes: "🎬 Filmes",
-    Series: "📺 Séries",
-    Noticias: "📰 Notícias",
-    Infantil: "👶 Infantil",
-    Musica: "🎵 Música",
-    Internacionais: "🌎 Internacionais",
-    Entretenimento: "🎭 Entretenimento",
-    Culinaria: "🍳 Culinária",
-    Tecnologia: "💻 Tecnologia",
-    Documentarios: "🌿 Documentários",
-    Religiosos: "🙏 Religiosos",
-    Educacao: "🎓 Educação",
-    Variedades: "🏠 Variedades"
-
-  };
+    document.getElementById("totalClients").textContent =
+        clients.length;
 
 
-  /* ESPORTES */
-
-  if (category === "Esportes") {
-
-    content.innerHTML = `
-
-      <div class="channel">
-
-        <h3>⚽ Esportes</h3>
-
-        <p class="info">
-          Acessos oficiais de conteúdo esportivo.
-        </p>
+    document.getElementById("activeClients").textContent =
+        clients.length;
 
 
-        <div class="channel-item">
+    let expiring = 0;
 
-          <div>
-            <strong>🔴 Premiere</strong>
+    const today = new Date();
 
-            <p class="info">
-              Acesse o Premiere oficial da Globo.
+
+    clients.forEach(client => {
+
+        if (!client.date) {
+            return;
+        }
+
+
+        const date =
+            new Date(client.date + "T00:00:00");
+
+
+        const difference =
+            Math.ceil(
+                (date - today) /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        if (difference >= 0 && difference <= 7) {
+            expiring++;
+        }
+
+    });
+
+
+    document.getElementById("expiringClients").textContent =
+        expiring;
+
+}
+
+
+/* ================= CANAIS ================= */
+
+const channels = [
+
+    {
+        name: "TV Globo",
+        category: "globo",
+        description: "Conteúdo da TV Globo.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "GloboNews",
+        category: "globo",
+        description: "Notícias e informação.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "Multishow",
+        category: "globo",
+        description: "Música e entretenimento.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "GNT",
+        category: "globo",
+        description: "Entretenimento e variedades.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "Globoplay Novelas",
+        category: "globo",
+        description: "Novelas e dramaturgia.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "sportv",
+        category: "esportes",
+        description: "Conteúdo esportivo.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "sportv 2",
+        category: "esportes",
+        description: "Canal esportivo.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "sportv 3",
+        category: "esportes",
+        description: "Canal esportivo.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "Premiere",
+        category: "esportes",
+        description: "Acesso oficial ao Premiere.",
+        url: "https://premiere.globo.com/"
+    },
+
+    {
+        name: "Gloob",
+        category: "infantil",
+        description: "Conteúdo infantil.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "Gloobinho",
+        category: "infantil",
+        description: "Conteúdo infantil.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "Canal Brasil",
+        category: "filmes",
+        description: "Cinema e produção brasileira.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "Megapix",
+        category: "filmes",
+        description: "Canal de filmes.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "Universal TV",
+        category: "filmes",
+        description: "Filmes e séries.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "Studio Universal",
+        category: "filmes",
+        description: "Filmes e entretenimento.",
+        url: "https://globoplay.globo.com/"
+    },
+
+    {
+        name: "USA Network",
+        category: "filmes",
+        description: "Entretenimento e séries.",
+        url: "https://globoplay.globo.com/"
+    }
+
+];
+
+
+function showChannelCategory(category, button) {
+
+    if (button) {
+
+        document
+            .querySelectorAll(".category-button")
+            .forEach(btn =>
+                btn.classList.remove("selected")
+            );
+
+        button.classList.add("selected");
+
+    }
+
+
+    const list =
+        document.getElementById("channelList");
+
+
+    const filtered =
+        category === "todos"
+            ? channels
+            : channels.filter(
+                channel =>
+                    channel.category === category
+            );
+
+
+    list.innerHTML = "";
+
+
+    filtered.forEach(channel => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "channel";
+
+
+        div.innerHTML = `
+
+            <h3>📺 ${escapeHTML(channel.name)}</h3>
+
+            <p>
+                ${escapeHTML(channel.description)}
             </p>
-          </div>
 
-          <a
-            href="https://premiere.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
+            <a
+                href="${channel.url}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-official btn-small">
 
-            <button class="btn-premiere">
-              ▶ Premiere Globo
-            </button>
+                ▶ Acessar oficial
 
-          </a>
+            </a>
 
-        </div>
+        `;
 
 
-        <div class="channel-item">
+        list.appendChild(div);
 
-          <div>
-            <strong>🏆 sportv</strong>
+    });
 
-            <p class="info">
-              Conteúdo esportivo da Globo.
-            </p>
-          </div>
+}
 
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
 
-            <button class="btn-globo">
-              ▶ Abrir Globoplay
-            </button>
+/* ================= SEGURANÇA BÁSICA DE EXIBIÇÃO ================= */
 
-          </a>
+function escapeHTML(text) {
 
-        </div>
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
+}
 
-        <div class="channel-item">
 
-          <div>
-            <strong>🏆 sportv 2</strong>
+/* ================= MENU MOBILE ================= */
 
-            <p class="info">
-              Canal esportivo.
-            </p>
-          </div>
+function toggleMobileMenu() {
 
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
+    const sidebar =
+        document.querySelector(".sidebar");
 
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
 
-          </a>
+    if (window.innerWidth <= 700) {
 
-        </div>
+        if (sidebar.style.display === "block") {
 
+            sidebar.style.display = "none";
 
-        <div class="channel-item">
+        } else {
 
-          <div>
-            <strong>🏆 sportv 3</strong>
+            sidebar.style.display = "block";
 
-            <p class="info">
-              Canal esportivo.
-            </p>
-          </div>
+            sidebar.style.position = "fixed";
 
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
+            sidebar.style.width = "245px";
 
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
+            sidebar.style.zIndex = "100";
 
-          </a>
+        }
 
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  /* NOTÍCIAS */
-
-  if (category === "Noticias") {
-
-    content.innerHTML = `
-
-      <div class="channel">
-
-        <h3>📰 Notícias</h3>
-
-
-        <div class="channel-item">
-
-          <div>
-            <strong>📰 GloboNews</strong>
-
-            <p class="info">
-              Notícias e informação.
-            </p>
-          </div>
-
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  /* INFANTIL */
-
-  if (category === "Infantil") {
-
-    content.innerHTML = `
-
-      <div class="channel">
-
-        <h3>👶 Infantil</h3>
-
-
-        <div class="channel-item">
-
-          <div>
-            <strong>🌈 Gloob</strong>
-
-            <p class="info">
-              Conteúdo infantil.
-            </p>
-          </div>
-
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
-
-          </a>
-
-        </div>
-
-
-        <div class="channel-item">
-
-          <div>
-            <strong>🌈 Gloobinho</strong>
-
-            <p class="info">
-              Conteúdo infantil.
-            </p>
-          </div>
-
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  /* ENTRETENIMENTO */
-
-  if (category === "Entretenimento") {
-
-    content.innerHTML = `
-
-      <div class="channel">
-
-        <h3>🎭 Entretenimento</h3>
-
-
-        <div class="channel-item">
-
-          <div>
-            <strong>📺 TV Globo</strong>
-
-            <p class="info">
-              Conteúdo da TV Globo.
-            </p>
-          </div>
-
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
-
-          </a>
-
-        </div>
-
-
-        <div class="channel-item">
-
-          <div>
-            <strong>🎤 Multishow</strong>
-
-            <p class="info">
-              Música e entretenimento.
-            </p>
-          </div>
-
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
-
-          </a>
-
-        </div>
-
-
-        <div class="channel-item">
-
-          <div>
-            <strong>🎭 GNT</strong>
-
-            <p class="info">
-              Entretenimento, culinária e variedades.
-            </p>
-          </div>
-
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
-
-          </a>
-
-        </div>
-
-
-        <div class="channel-item">
-
-          <div>
-            <strong>🎬 Globoplay Novelas</strong>
-
-            <p class="info">
-              Novelas e conteúdos de dramaturgia.
-            </p>
-          </div>
-
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  /* FILMES */
-
-  if (category === "Filmes") {
-
-    content.innerHTML = `
-
-      <div class="channel">
-
-        <h3>🎬 Filmes</h3>
-
-
-        <div class="channel-item">
-
-          <div>
-            <strong>🎬 Canal Brasil</strong>
-
-            <p class="info">
-              Filmes e produções brasileiras.
-            </p>
-          </div>
-
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
-
-          </a>
-
-        </div>
-
-
-        <div class="channel-item">
-
-          <div>
-            <strong>🎬 Megapix</strong>
-
-            <p class="info">
-              Canal de filmes.
-            </p>
-          </div>
-
-          <a
-            href="https://globoplay.globo.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            <button class="btn-globo">
-              ▶ Globoplay
-            </button>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  /* OUTRAS CATEGORIAS */
-
-  content.innerHTML = `
-
-    <div class="channel">
-
-      <h3>${names[category]}</h3>
-
-      <br>
-
-      <p>
-        Área de demonstração.
-        Adicione seus canais aqui.
-      </p>
-
-    </div>
-
-  `;
+    }
 
 }
 

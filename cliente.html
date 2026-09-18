@@ -3,122 +3,239 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IPTV BR - Cliente</title>
+
+<title>IPTV BR - Área do Cliente</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-  margin:0;
-  background:#080808;
-  color:white;
+    margin:0;
+    background:#080808;
+    color:white;
 }
+
+/* LOGIN */
 
 .login{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
-.box{
-  width:100%;
-  max-width:380px;
-  background:#171717;
-  padding:30px;
-  border-radius:18px;
-  text-align:center;
+.login-box{
+    width:100%;
+    max-width:380px;
+    background:#171717;
+    padding:30px;
+    border-radius:18px;
+    text-align:center;
 }
 
-h1{
-  margin-top:0;
+.logo{
+    font-size:30px;
+    font-weight:bold;
 }
 
 .green{
-  color:#00e676;
+    color:#00e676;
+}
+
+.login-box p{
+    color:#aaa;
 }
 
 input{
-  width:100%;
-  padding:15px;
-  margin:8px 0;
-  border:1px solid #333;
-  border-radius:10px;
-  background:#0b0b0b;
-  color:white;
-  font-size:16px;
+    width:100%;
+    padding:15px;
+    margin:8px 0;
+    border:1px solid #333;
+    border-radius:10px;
+    background:#0b0b0b;
+    color:white;
+    font-size:16px;
 }
 
 button{
-  width:100%;
-  padding:15px;
-  margin-top:10px;
-  border:0;
-  border-radius:10px;
-  background:#00e676;
-  color:#000;
-  font-size:16px;
-  font-weight:bold;
+    border:0;
+    border-radius:10px;
+    padding:13px 18px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.login-btn{
+    width:100%;
+    margin-top:10px;
+    background:#00e676;
+    color:#000;
 }
 
 .erro{
-  color:#ff5252;
-  margin-top:15px;
-  display:none;
+    display:none;
+    color:#ff5252;
+    margin-top:15px;
 }
 
+/* APP */
+
 #cliente{
-  display:none;
-  min-height:100vh;
+    display:none;
+    min-height:100vh;
 }
 
 .topo{
-  background:#151515;
-  padding:18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+    background:#151515;
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #292929;
 }
 
 .sair{
-  width:auto;
-  background:#ff5252;
-  color:white;
-  padding:10px 16px;
-  margin:0;
+    background:#ff5252;
+    color:white;
 }
 
 .conteudo{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:20px;
 }
 
 .card{
-  background:#171717;
-  border:1px solid #292929;
-  border-radius:15px;
-  padding:20px;
-  margin-bottom:18px;
+    background:#171717;
+    border:1px solid #292929;
+    border-radius:15px;
+    padding:18px;
 }
 
-.card p{
-  color:#aaa;
+.card small{
+    color:#888;
+}
+
+.card strong{
+    display:block;
+    font-size:20px;
+    margin-top:7px;
+}
+
+/* CATEGORIAS */
+
+.categorias{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    margin-bottom:18px;
+    padding-bottom:5px;
+}
+
+.categorias button{
+    white-space:nowrap;
+    background:#252525;
+    color:white;
+}
+
+.categorias button.ativo{
+    background:#00e676;
+    color:#000;
+}
+
+/* CANAIS */
+
+.lista-canais{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.canal{
+    background:#171717;
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:15px;
+}
+
+.canal h3{
+    margin:0 0 7px;
+}
+
+.canal p{
+    color:#888;
+    font-size:13px;
+    min-height:32px;
+}
+
+.assistir{
+    width:100%;
+    background:#00e676;
+    color:#000;
+    margin-top:8px;
+}
+
+/* PLAYER */
+
+.player-box{
+    margin-top:20px;
+    background:#171717;
+    border:1px solid #292929;
+    border-radius:15px;
+    padding:18px;
 }
 
 video{
-  width:100%;
-  background:#000;
-  border-radius:12px;
+    width:100%;
+    background:#000;
+    border-radius:12px;
+    display:block;
 }
 
+#nomeCanal{
+    margin-top:12px;
+    font-size:19px;
+}
+
+/* SUPORTE */
+
 .suporte{
-  background:#25d366;
-  color:white;
+    width:100%;
+    background:#25d366;
+    color:white;
+    margin-top:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .lista-canais{
+        grid-template-columns:1fr;
+    }
+
+    .conteudo{
+        padding:14px;
+    }
+
 }
 
 </style>
@@ -126,39 +243,48 @@ video{
 
 <body>
 
+
 <!-- LOGIN -->
 
 <div class="login" id="login">
 
-  <div class="box">
+    <div class="login-box">
 
-    <h1>
-      IPTV <span class="green">BR</span>
-    </h1>
+        <div class="logo">
+            IPTV <span class="green">BR</span>
+        </div>
 
-    <p>Área do Cliente</p>
+        <p>
+            Área exclusiva do cliente
+        </p>
 
-    <input
-      id="usuario"
-      type="text"
-      placeholder="Usuário"
-    >
+        <input
+            id="usuario"
+            type="text"
+            placeholder="Usuário"
+        >
 
-    <input
-      id="senha"
-      type="password"
-      placeholder="Senha"
-    >
+        <input
+            id="senha"
+            type="password"
+            placeholder="Senha"
+        >
 
-    <button type="button" onclick="entrar()">
-      ENTRAR
-    </button>
+        <button
+            class="login-btn"
+            onclick="entrar()"
+        >
+            ENTRAR
+        </button>
 
-    <div class="erro" id="erro">
-      Usuário ou senha incorretos.
+        <div
+            class="erro"
+            id="erro"
+        >
+            Usuário ou senha incorretos.
+        </div>
+
     </div>
-
-  </div>
 
 </div>
 
@@ -167,174 +293,405 @@ video{
 
 <div id="cliente">
 
-  <div class="topo">
 
-    <strong>
-      IPTV <span class="green">BR</span>
-    </strong>
+    <!-- TOPO -->
 
-    <button
-      class="sair"
-      type="button"
-      onclick="sair()"
-    >
-      Sair
-    </button>
+    <div class="topo">
 
-  </div>
+        <div class="logo">
+            IPTV <span class="green">BR</span>
+        </div>
 
-
-  <div class="conteudo">
-
-    <div class="card">
-
-      <h2>
-        Olá, Cliente! 👋
-      </h2>
-
-      <p>
-        Bem-vindo à sua área de cliente.
-      </p>
+        <button
+            class="sair"
+            onclick="sair()"
+        >
+            Sair
+        </button>
 
     </div>
 
 
-    <div class="card">
+    <div class="conteudo">
 
-      <h2>📋 Minha conta</h2>
 
-      <p>
-        <strong>Usuário:</strong> cliente
-      </p>
+        <!-- BOAS-VINDAS -->
 
-      <p>
-        <strong>Plano:</strong> Premium
-      </p>
+        <div class="card">
 
-      <p>
-        <strong>Vencimento:</strong> 30/12/2026
-      </p>
+            <h2>
+                Olá, Cliente! 👋
+            </h2>
 
-      <p>
-        <strong>Status:</strong> Ativo ✅
-      </p>
+            <p>
+                Escolha um canal para assistir.
+            </p>
+
+        </div>
+
+
+        <!-- INFORMAÇÕES -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <small>
+                    Plano
+                </small>
+
+                <strong>
+                    Premium
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <small>
+                    Vencimento
+                </small>
+
+                <strong>
+                    30/12/2026
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <small>
+                    Status
+                </small>
+
+                <strong>
+                    Ativo ✅
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PLAYER -->
+
+        <div class="player-box">
+
+            <h2>
+                📺 Player
+            </h2>
+
+            <video
+                id="video"
+                controls
+                playsinline
+            ></video>
+
+            <div id="nomeCanal">
+                Nenhum canal selecionado
+            </div>
+
+        </div>
+
+
+        <!-- CATEGORIAS -->
+
+        <div class="player-box">
+
+            <h2>
+                📡 Canais
+            </h2>
+
+            <div class="categorias">
+
+                <button
+                    class="ativo"
+                    onclick="filtrar('todos',this)"
+                >
+                    Todos
+                </button>
+
+                <button
+                    onclick="filtrar('tv',this)"
+                >
+                    📺 TV Aberta
+                </button>
+
+                <button
+                    onclick="filtrar('filmes',this)"
+                >
+                    🎬 Filmes
+                </button>
+
+                <button
+                    onclick="filtrar('series',this)"
+                >
+                    📺 Séries
+                </button>
+
+                <button
+                    onclick="filtrar('esportes',this)"
+                >
+                    ⚽ Esportes
+                </button>
+
+            </div>
+
+
+            <div
+                class="lista-canais"
+                id="listaCanais"
+            ></div>
+
+        </div>
+
+
+        <!-- SUPORTE -->
+
+        <div class="card">
+
+            <h2>
+                💬 Suporte
+            </h2>
+
+            <p>
+                Precisa de ajuda?
+            </p>
+
+            <button
+                class="suporte"
+                onclick="suporte()"
+            >
+                Falar com suporte
+            </button>
+
+        </div>
+
 
     </div>
-
-
-    <div class="card">
-
-      <h2>📺 Assistir</h2>
-
-      <video
-        id="video"
-        controls
-        playsinline
-      ></video>
-
-      <button
-        type="button"
-        onclick="abrirVideo()"
-      >
-        ▶ TESTAR VÍDEO
-      </button>
-
-    </div>
-
-
-    <div class="card">
-
-      <h2>💬 Suporte</h2>
-
-      <p>
-        Entre em contato com o suporte.
-      </p>
-
-      <button
-        class="suporte"
-        type="button"
-        onclick="suporte()"
-      >
-        WhatsApp
-      </button>
-
-    </div>
-
-  </div>
 
 </div>
 
 
 <script>
 
+/* LOGIN */
+
 function entrar(){
 
-  var usuario =
-    document.getElementById("usuario").value.trim();
+    const usuario =
+        document.getElementById("usuario").value.trim();
 
-  var senha =
-    document.getElementById("senha").value.trim();
+    const senha =
+        document.getElementById("senha").value.trim();
 
-  var erro =
-    document.getElementById("erro");
+    const erro =
+        document.getElementById("erro");
 
-  if(
-    usuario === "cliente" &&
-    senha === "1234"
-  ){
 
-    document.getElementById("login").style.display = "none";
+    if(
+        usuario === "cliente" &&
+        senha === "1234"
+    ){
 
-    document.getElementById("cliente").style.display = "block";
+        document.getElementById("login")
+            .style.display = "none";
 
-    erro.style.display = "none";
+        document.getElementById("cliente")
+            .style.display = "block";
 
-  }else{
+        erro.style.display = "none";
 
-    erro.style.display = "block";
+        carregarCanais();
 
-  }
+    }else{
+
+        erro.style.display = "block";
+
+    }
 
 }
 
+
+/* SAIR */
 
 function sair(){
 
-  document.getElementById("cliente").style.display = "none";
+    document.getElementById("cliente")
+        .style.display = "none";
 
-  document.getElementById("login").style.display = "flex";
+    document.getElementById("login")
+        .style.display = "flex";
 
-  document.getElementById("usuario").value = "";
+    document.getElementById("usuario")
+        .value = "";
 
-  document.getElementById("senha").value = "";
+    document.getElementById("senha")
+        .value = "";
+
+}
+
+
+/* CANAIS */
+
+const canais = [
+
+    {
+        nome:"📺 TV Demonstração",
+        categoria:"tv",
+        descricao:"Canal de demonstração",
+        url:"https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+    },
+
+    {
+        nome:"🎬 Filme Demonstração",
+        categoria:"filmes",
+        descricao:"Vídeo de demonstração",
+        url:"https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+    },
+
+    {
+        nome:"📺 Série Demonstração",
+        categoria:"series",
+        descricao:"Episódio de demonstração",
+        url:"https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+    },
+
+    {
+        nome:"⚽ Esporte Demonstração",
+        categoria:"esportes",
+        descricao:"Vídeo esportivo de demonstração",
+        url:"https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+    }
+
+];
+
+
+/* MOSTRAR CANAIS */
+
+function carregarCanais(){
+
+    mostrarCanais("todos");
 
 }
 
 
-function abrirVideo(){
+/* FILTRAR */
 
-  var video =
-    document.getElementById("video");
+function filtrar(categoria,botao){
 
-  video.src =
-    "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4";
+    document
+        .querySelectorAll(".categorias button")
+        .forEach(function(b){
 
-  video.load();
+            b.classList.remove("ativo");
 
-  video.play().catch(function(){
+        });
 
-    alert("Toque no botão ▶ do vídeo.");
+    botao.classList.add("ativo");
 
-  });
+    mostrarCanais(categoria);
 
 }
 
+
+/* RENDERIZAR */
+
+function mostrarCanais(categoria){
+
+    const lista =
+        document.getElementById("listaCanais");
+
+    lista.innerHTML = "";
+
+
+    canais.forEach(function(canal){
+
+        if(
+            categoria !== "todos" &&
+            canal.categoria !== categoria
+        ){
+
+            return;
+
+        }
+
+
+        const div =
+            document.createElement("div");
+
+        div.className = "canal";
+
+
+        div.innerHTML = `
+
+            <h3>${canal.nome}</h3>
+
+            <p>${canal.descricao}</p>
+
+            <button
+                class="assistir"
+                onclick="assistir('${canal.nome}','${canal.url}')"
+            >
+                ▶ Assistir
+            </button>
+
+        `;
+
+
+        lista.appendChild(div);
+
+    });
+
+}
+
+
+/* ASSISTIR */
+
+function assistir(nome,url){
+
+    const video =
+        document.getElementById("video");
+
+    const titulo =
+        document.getElementById("nomeCanal");
+
+
+    titulo.textContent =
+        nome;
+
+
+    video.src =
+        url;
+
+    video.load();
+
+    video.play().catch(function(){
+
+        alert(
+            "Toque no botão ▶ do player para iniciar."
+        );
+
+    });
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* SUPORTE */
 
 function suporte(){
 
-  alert(
-    "O WhatsApp do suporte será configurado depois."
-  );
+    alert(
+        "O WhatsApp do suporte será configurado depois."
+    );
 
 }
 

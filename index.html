@@ -1,153 +1,464 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IPTV BR</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPTV BR - Painel</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      background: #111;
-      color: white;
-    }
+body {
+  background: #0b0f19;
+  color: #fff;
+  min-height: 100vh;
+}
 
-    .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: auto;
-    }
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
 
-    .login-page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.logo {
+  text-align: center;
+  margin-bottom: 25px;
+}
 
-    .login-box {
-      width: 100%;
-      max-width: 400px;
-      background: #1d1d1d;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-    }
+.logo img {
+  width: 180px;
+  max-width: 80%;
+  height: auto;
+}
 
-    .logo {
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 25px;
-    }
+.card {
+  background: #151b29;
+  border: 1px solid #263047;
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
 
-    .logo span {
-      color: #e50914;
-    }
+h1, h2 {
+  margin-bottom: 15px;
+}
 
-    input, select {
-      width: 100%;
-      padding: 13px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 8px;
-    }
+input, select {
+  width: 100%;
+  padding: 13px;
+  margin: 7px 0;
+  border: 1px solid #303b55;
+  border-radius: 10px;
+  background: #0e1421;
+  color: white;
+  outline: none;
+}
 
-    button {
-      width: 100%;
-      padding: 13px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 8px;
-      background: #e50914;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
+button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 10px;
+  background: #19c37d;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    button:hover {
-      opacity: .9;
-    }
+button:hover {
+  opacity: .9;
+}
 
-    .dashboard {
-      display: none;
-      padding: 30px 0;
-    }
+.btn-danger {
+  background: #e5484d;
+}
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
+.btn-secondary {
+  background: #303b55;
+}
 
-    .header button {
-      width: auto;
-      padding: 10px 18px;
-      margin: 0;
-    }
+.hidden {
+  display: none;
+}
 
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-bottom: 25px;
-    }
+.login {
+  max-width: 430px;
+  margin: 60px auto;
+}
 
-    .plan {
-      background: #1d1d1d;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-    }
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
 
-    .clients {
-      background: #1d1d1d;
-      padding: 20px;
-      border-radius: 12px;
-    }
+.plan {
+  background: #101725;
+  border: 1px solid #293650;
+  padding: 20px;
+  border-radius: 14px;
+}
 
-    .client {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #333;
-    }
+.plan h3 {
+  margin-bottom: 10px;
+}
 
-    .client button {
-      width: auto;
-      background: #555;
-      padding: 7px 12px;
-      margin: 0;
-    }
+.price {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 12px 0;
+}
 
-    .error {
-      color: #ff4444;
-      margin-top: 10px;
-    }
+.client {
+  background: #101725;
+  border: 1px solid #293650;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 12px;
+}
 
-    .success {
-      color: #4caf50;
-      margin-top: 10px;
-    }
-  </style>
+.client p {
+  margin: 5px 0;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.topbar button {
+  width: auto;
+  padding: 10px 18px;
+  margin: 0;
+}
+
+.message {
+  margin-top: 10px;
+  color: #19c37d;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 12px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .topbar button {
+    width: 100%;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div id="loginPage" class="login-page">
-    <div class="login-box">
+<!-- LOGIN -->
+<div id="loginPage" class="container login">
 
-      <div class="logo">
-        IPTV <span>BR</span>
+  <div class="logo">
+    <img src="arquivo_00000000fecc820eacac196cdea695a3.png"
+         alt="IPTV BR">
+  </div>
+
+  <div class="card">
+    <h1>Entrar no painel</h1>
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Usuário">
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Senha">
+
+    <button onclick="login()">Entrar</button>
+
+    <p id="loginMessage" class="message"></p>
+  </div>
+
+</div>
+
+
+<!-- PAINEL -->
+<div id="panelPage" class="container hidden">
+
+  <div class="topbar">
+    <div>
+      <h1>IPTV BR</h1>
+      <p>Painel de gerenciamento</p>
+    </div>
+
+    <button class="btn-secondary" onclick="logout()">
+      Sair
+    </button>
+  </div>
+
+
+  <!-- PLANOS -->
+  <div class="card">
+
+    <h2>Planos</h2>
+
+    <div class="plans">
+
+      <div class="plan">
+        <h3>Básico</h3>
+        <p>Acesso mensal</p>
+        <div class="price">R$ 25</div>
       </div>
 
-      <h2>Entrar</h2>
+      <div class="plan">
+        <h3>Premium</h3>
+        <p>Acesso completo</p>
+        <div class="price">R$ 35</div>
+      </div>
 
-      <input type="text" id="username
+    </div>
+
+  </div>
+
+
+  <!-- CADASTRO -->
+  <div class="card">
+
+    <h2>Cadastrar cliente</h2>
+
+    <input
+      type="text"
+      id="clientName"
+      placeholder="Nome do cliente">
+
+    <input
+      type="text"
+      id="clientPhone"
+      placeholder="Telefone">
+
+    <select id="clientPlan">
+      <option value="Básico">Básico</option>
+      <option value="Premium">Premium</option>
+    </select>
+
+    <input
+      type="date"
+      id="clientDate">
+
+    <button onclick="addClient()">
+      Cadastrar cliente
+    </button>
+
+    <p id="clientMessage" class="message"></p>
+
+  </div>
+
+
+  <!-- CLIENTES -->
+  <div class="card">
+
+    <h2>Clientes</h2>
+
+    <div id="clientList"></div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const USER = "admin";
+const PASS = "1234";
+
+let clients =
+  JSON.parse(localStorage.getItem("iptvClients")) || [];
+
+
+function login() {
+
+  const username =
+    document.getElementById("username").value;
+
+  const password =
+    document.getElementById("password").value;
+
+  const message =
+    document.getElementById("loginMessage");
+
+  if (username === USER && password === PASS) {
+
+    document
+      .getElementById("loginPage")
+      .classList.add("hidden");
+
+    document
+      .getElementById("panelPage")
+      .classList.remove("hidden");
+
+    renderClients();
+
+  } else {
+
+    message.textContent =
+      "Usuário ou senha incorretos.";
+
+  }
+}
+
+
+function logout() {
+
+  document
+    .getElementById("panelPage")
+    .classList.add("hidden");
+
+  document
+    .getElementById("loginPage")
+    .classList.remove("hidden");
+
+  document.getElementById("username").value = "";
+  document.getElementById("password").value = "";
+
+}
+
+
+function addClient() {
+
+  const name =
+    document.getElementById("clientName").value.trim();
+
+  const phone =
+    document.getElementById("clientPhone").value.trim();
+
+  const plan =
+    document.getElementById("clientPlan").value;
+
+  const date =
+    document.getElementById("clientDate").value;
+
+  const message =
+    document.getElementById("clientMessage");
+
+
+  if (!name || !phone || !date) {
+
+    message.textContent =
+      "Preencha todos os campos.";
+
+    return;
+  }
+
+
+  const client = {
+    id: Date.now(),
+    name: name,
+    phone: phone,
+    plan: plan,
+    date: date
+  };
+
+
+  clients.push(client);
+
+  localStorage.setItem(
+    "iptvClients",
+    JSON.stringify(clients)
+  );
+
+
+  document.getElementById("clientName").value = "";
+  document.getElementById("clientPhone").value = "";
+  document.getElementById("clientDate").value = "";
+
+  message.textContent =
+    "Cliente cadastrado com sucesso!";
+
+  renderClients();
+
+}
+
+
+function deleteClient(id) {
+
+  if (!confirm("Deseja excluir este cliente?")) {
+    return;
+  }
+
+  clients =
+    clients.filter(client => client.id !== id);
+
+  localStorage.setItem(
+    "iptvClients",
+    JSON.stringify(clients)
+  );
+
+  renderClients();
+
+}
+
+
+function renderClients() {
+
+  const list =
+    document.getElementById("clientList");
+
+  if (clients.length === 0) {
+
+    list.innerHTML =
+      "<p>Nenhum cliente cadastrado.</p>";
+
+    return;
+  }
+
+
+  list.innerHTML = "";
+
+
+  clients.forEach(client => {
+
+    const div =
+      document.createElement("div");
+
+    div.className = "client";
+
+
+    div.innerHTML = `
+      <p><strong>Nome:</strong> ${client.name}</p>
+      <p><strong>Telefone:</strong> ${client.phone}</p>
+      <p><strong>Plano:</strong> ${client.plan}</p>
+      <p><strong>Vencimento:</strong> ${client.date}</p>
+
+      <button
+        class="btn-danger"
+        onclick="deleteClient(${client.id})">
+        Excluir cliente
+      </button>
+    `;
+
+
+    list.appendChild(div);
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>

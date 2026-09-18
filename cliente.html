@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>IPTV BR - Área do Cliente</title>
+<title>IPTV BR - Cliente</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     font-family:Arial,sans-serif;
@@ -16,10 +14,8 @@
 body{
     margin:0;
     background:#080808;
-    color:white;
+    color:#fff;
 }
-
-/* LOGIN */
 
 .login{
     min-height:100vh;
@@ -58,7 +54,7 @@ input{
     border:1px solid #333;
     border-radius:10px;
     background:#0b0b0b;
-    color:white;
+    color:#fff;
     font-size:16px;
 }
 
@@ -83,8 +79,6 @@ button{
     margin-top:15px;
 }
 
-/* APP */
-
 #cliente{
     display:none;
     min-height:100vh;
@@ -97,11 +91,14 @@ button{
     justify-content:space-between;
     align-items:center;
     border-bottom:1px solid #292929;
+    position:sticky;
+    top:0;
+    z-index:10;
 }
 
 .sair{
     background:#ff5252;
-    color:white;
+    color:#fff;
 }
 
 .conteudo{
@@ -110,54 +107,72 @@ button{
     padding:20px;
 }
 
-/* CARDS */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-bottom:20px;
-}
-
 .card{
     background:#171717;
     border:1px solid #292929;
     border-radius:15px;
     padding:18px;
+    margin-bottom:18px;
 }
 
-.card small{
-    color:#888;
+.card p{
+    color:#aaa;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
 .card strong{
-    display:block;
     font-size:20px;
-    margin-top:7px;
 }
 
-/* CATEGORIAS */
+.player-box{
+    background:#171717;
+    border:1px solid #292929;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:20px;
+}
+
+video{
+    width:100%;
+    background:#000;
+    border-radius:12px;
+    display:block;
+    min-height:220px;
+}
+
+#nomeCanal{
+    margin-top:12px;
+    font-size:19px;
+    font-weight:bold;
+}
+
+.busca{
+    margin-bottom:15px;
+}
 
 .categorias{
     display:flex;
-    gap:10px;
+    gap:8px;
     overflow-x:auto;
-    margin-bottom:18px;
-    padding-bottom:5px;
+    padding-bottom:10px;
+    margin-bottom:15px;
 }
 
 .categorias button{
     white-space:nowrap;
-    background:#252525;
-    color:white;
+    background:#292929;
+    color:#fff;
 }
 
 .categorias button.ativo{
     background:#00e676;
     color:#000;
 }
-
-/* CANAIS */
 
 .lista-canais{
     display:grid;
@@ -166,61 +181,59 @@ button{
 }
 
 .canal{
-    background:#171717;
+    background:#101010;
     border:1px solid #292929;
     border-radius:14px;
     padding:15px;
 }
 
+.icone{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
 .canal h3{
-    margin:0 0 7px;
+    margin:5px 0;
 }
 
 .canal p{
     color:#888;
     font-size:13px;
-    min-height:32px;
+    min-height:30px;
+}
+
+.acoes{
+    display:flex;
+    gap:8px;
 }
 
 .assistir{
-    width:100%;
+    flex:1;
     background:#00e676;
     color:#000;
-    margin-top:8px;
 }
 
-/* PLAYER */
-
-.player-box{
-    margin-top:20px;
-    background:#171717;
-    border:1px solid #292929;
-    border-radius:15px;
-    padding:18px;
+.favorito{
+    background:#292929;
+    color:#fff;
 }
 
-video{
-    width:100%;
-    background:#000;
-    border-radius:12px;
-    display:block;
+.favorito.ativo{
+    background:#ffd54f;
+    color:#000;
 }
-
-#nomeCanal{
-    margin-top:12px;
-    font-size:19px;
-}
-
-/* SUPORTE */
 
 .suporte{
     width:100%;
     background:#25d366;
-    color:white;
-    margin-top:10px;
+    color:#fff;
 }
 
-/* MOBILE */
+.vazio{
+    color:#888;
+    text-align:center;
+    padding:30px;
+}
 
 @media(max-width:700px){
 
@@ -237,12 +250,10 @@ video{
     }
 
 }
-
 </style>
 </head>
 
 <body>
-
 
 <!-- LOGIN -->
 
@@ -254,9 +265,7 @@ video{
             IPTV <span class="green">BR</span>
         </div>
 
-        <p>
-            Área exclusiva do cliente
-        </p>
+        <p>Área exclusiva do cliente</p>
 
         <input
             id="usuario"
@@ -272,15 +281,13 @@ video{
 
         <button
             class="login-btn"
+            type="button"
             onclick="entrar()"
         >
             ENTRAR
         </button>
 
-        <div
-            class="erro"
-            id="erro"
-        >
+        <div class="erro" id="erro">
             Usuário ou senha incorretos.
         </div>
 
@@ -289,12 +296,9 @@ video{
 </div>
 
 
-<!-- ÁREA DO CLIENTE -->
+<!-- CLIENTE -->
 
 <div id="cliente">
-
-
-    <!-- TOPO -->
 
     <div class="topo">
 
@@ -314,9 +318,6 @@ video{
 
     <div class="conteudo">
 
-
-        <!-- BOAS-VINDAS -->
-
         <div class="card">
 
             <h2>
@@ -324,7 +325,7 @@ video{
             </h2>
 
             <p>
-                Escolha um canal para assistir.
+                Escolha seu conteúdo para assistir.
             </p>
 
         </div>
@@ -335,41 +336,18 @@ video{
         <div class="cards">
 
             <div class="card">
-
-                <small>
-                    Plano
-                </small>
-
-                <strong>
-                    Premium
-                </strong>
-
+                <small>Plano</small>
+                <strong>Premium</strong>
             </div>
 
-
             <div class="card">
-
-                <small>
-                    Vencimento
-                </small>
-
-                <strong>
-                    30/12/2026
-                </strong>
-
+                <small>Vencimento</small>
+                <strong>30/12/2026</strong>
             </div>
 
-
             <div class="card">
-
-                <small>
-                    Status
-                </small>
-
-                <strong>
-                    Ativo ✅
-                </strong>
-
+                <small>Status</small>
+                <strong>Ativo ✅</strong>
             </div>
 
         </div>
@@ -379,9 +357,7 @@ video{
 
         <div class="player-box">
 
-            <h2>
-                📺 Player
-            </h2>
+            <h2>📺 Player</h2>
 
             <video
                 id="video"
@@ -390,19 +366,31 @@ video{
             ></video>
 
             <div id="nomeCanal">
-                Nenhum canal selecionado
+                Nenhum conteúdo selecionado
             </div>
 
         </div>
 
 
-        <!-- CATEGORIAS -->
+        <!-- CANAIS -->
 
         <div class="player-box">
 
-            <h2>
-                📡 Canais
-            </h2>
+            <h2>📡 Canais</h2>
+
+
+            <!-- BUSCA -->
+
+            <input
+                class="busca"
+                id="busca"
+                type="text"
+                placeholder="🔎 Procurar canal..."
+                oninput="buscar()"
+            >
+
+
+            <!-- CATEGORIAS -->
 
             <div class="categorias">
 
@@ -410,13 +398,19 @@ video{
                     class="ativo"
                     onclick="filtrar('todos',this)"
                 >
-                    Todos
+                    ⭐ Todos
                 </button>
 
                 <button
                     onclick="filtrar('tv',this)"
                 >
                     📺 TV Aberta
+                </button>
+
+                <button
+                    onclick="filtrar('noticias',this)"
+                >
+                    📰 Notícias
                 </button>
 
                 <button
@@ -437,6 +431,48 @@ video{
                     ⚽ Esportes
                 </button>
 
+                <button
+                    onclick="filtrar('musica',this)"
+                >
+                    🎵 Música
+                </button>
+
+                <button
+                    onclick="filtrar('infantil',this)"
+                >
+                    👶 Infantil
+                </button>
+
+                <button
+                    onclick="filtrar('documentarios',this)"
+                >
+                    🌎 Documentários
+                </button>
+
+                <button
+                    onclick="filtrar('entretenimento',this)"
+                >
+                    🎭 Entretenimento
+                </button>
+
+                <button
+                    onclick="filtrar('games',this)"
+                >
+                    🎮 Games
+                </button>
+
+                <button
+                    onclick="filtrar('ao-vivo',this)"
+                >
+                    🔴 Ao Vivo
+                </button>
+
+                <button
+                    onclick="filtrar('favoritos',this)"
+                >
+                    ❤️ Favoritos
+                </button>
+
             </div>
 
 
@@ -452,9 +488,7 @@ video{
 
         <div class="card">
 
-            <h2>
-                💬 Suporte
-            </h2>
+            <h2>💬 Suporte</h2>
 
             <p>
                 Precisa de ajuda?
@@ -468,7 +502,6 @@ video{
             </button>
 
         </div>
-
 
     </div>
 
@@ -519,183 +552,4 @@ function entrar(){
 
 function sair(){
 
-    document.getElementById("cliente")
-        .style.display = "none";
-
-    document.getElementById("login")
-        .style.display = "flex";
-
-    document.getElementById("usuario")
-        .value = "";
-
-    document.getElementById("senha")
-        .value = "";
-
-}
-
-
-/* CANAIS */
-
-const canais = [
-
-    {
-        nome:"📺 TV Demonstração",
-        categoria:"tv",
-        descricao:"Canal de demonstração",
-        url:"https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
-    },
-
-    {
-        nome:"🎬 Filme Demonstração",
-        categoria:"filmes",
-        descricao:"Vídeo de demonstração",
-        url:"https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
-    },
-
-    {
-        nome:"📺 Série Demonstração",
-        categoria:"series",
-        descricao:"Episódio de demonstração",
-        url:"https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
-    },
-
-    {
-        nome:"⚽ Esporte Demonstração",
-        categoria:"esportes",
-        descricao:"Vídeo esportivo de demonstração",
-        url:"https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
-    }
-
-];
-
-
-/* MOSTRAR CANAIS */
-
-function carregarCanais(){
-
-    mostrarCanais("todos");
-
-}
-
-
-/* FILTRAR */
-
-function filtrar(categoria,botao){
-
-    document
-        .querySelectorAll(".categorias button")
-        .forEach(function(b){
-
-            b.classList.remove("ativo");
-
-        });
-
-    botao.classList.add("ativo");
-
-    mostrarCanais(categoria);
-
-}
-
-
-/* RENDERIZAR */
-
-function mostrarCanais(categoria){
-
-    const lista =
-        document.getElementById("listaCanais");
-
-    lista.innerHTML = "";
-
-
-    canais.forEach(function(canal){
-
-        if(
-            categoria !== "todos" &&
-            canal.categoria !== categoria
-        ){
-
-            return;
-
-        }
-
-
-        const div =
-            document.createElement("div");
-
-        div.className = "canal";
-
-
-        div.innerHTML = `
-
-            <h3>${canal.nome}</h3>
-
-            <p>${canal.descricao}</p>
-
-            <button
-                class="assistir"
-                onclick="assistir('${canal.nome}','${canal.url}')"
-            >
-                ▶ Assistir
-            </button>
-
-        `;
-
-
-        lista.appendChild(div);
-
-    });
-
-}
-
-
-/* ASSISTIR */
-
-function assistir(nome,url){
-
-    const video =
-        document.getElementById("video");
-
-    const titulo =
-        document.getElementById("nomeCanal");
-
-
-    titulo.textContent =
-        nome;
-
-
-    video.src =
-        url;
-
-    video.load();
-
-    video.play().catch(function(){
-
-        alert(
-            "Toque no botão ▶ do player para iniciar."
-        );
-
-    });
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/* SUPORTE */
-
-function suporte(){
-
-    alert(
-        "O WhatsApp do suporte será configurado depois."
-    );
-
-}
-
-</script>
-
-</body>
-</html>
+    document.getElementById("cliente

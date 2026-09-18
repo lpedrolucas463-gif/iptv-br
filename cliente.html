@@ -3,776 +3,373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IPTV BR - Área do Cliente</title>
+<title>IPTV BR - Cliente</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0f19;
-  color: white;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0f19;
+    color: white;
 }
-
-header {
-  background: #111827;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-button {
-  border: 0;
-  border-radius: 8px;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.logout {
-  background: #ef4444;
-  color: white;
-}
-
-/* LOGIN */
 
 #login {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.login-box {
-  width: 100%;
-  max-width: 380px;
-  background: #111827;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-}
-
-.login-box h1 {
-  margin-top: 0;
+.caixa {
+    width: 90%;
+    max-width: 350px;
+    background: #151b29;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
 }
 
 input {
-  width: 100%;
-  padding: 13px;
-  margin: 7px 0;
-  border-radius: 8px;
-  border: 1px solid #374151;
-  background: #1f2937;
-  color: white;
-  font-size: 16px;
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 8px;
+    background: #252d3d;
+    color: white;
+    font-size: 16px;
 }
 
-.login-button {
-  width: 100%;
-  margin-top: 10px;
-  background: #2563eb;
-  color: white;
+button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 #erro {
-  color: #f87171;
-  margin-top: 12px;
+    color: #ff5555;
+    margin-top: 15px;
 }
 
-/* CLIENTE */
-
-#cliente {
-  display: none;
+#area {
+    display: none;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
+header {
+    background: #151b29;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sair {
+    width: auto;
+    margin: 0;
+    background: #dc2626;
+    padding: 8px 15px;
+}
+
+.conteudo {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
 }
 
 .info {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.info-card {
-  background: #111827;
-  padding: 18px;
-  border-radius: 12px;
-}
-
-.info-card strong {
-  display: block;
-  margin-bottom: 7px;
-  color: #9ca3af;
-}
-
-.player {
-  background: #111827;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 20px;
+    background: #151b29;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
 }
 
 video {
-  width: 100%;
-  max-height: 500px;
-  background: black;
-  border-radius: 8px;
-}
-
-.search {
-  margin-bottom: 15px;
+    width: 100%;
+    background: black;
+    border-radius: 10px;
 }
 
 .categorias {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 12px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin: 20px 0;
 }
 
 .categorias button {
-  background: #1f2937;
-  color: white;
-  white-space: nowrap;
-}
-
-.categorias button.ativo {
-  background: #2563eb;
+    width: auto;
+    white-space: nowrap;
+    background: #252d3d;
 }
 
 .canais {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 15px;
 }
 
 .canal {
-  background: #111827;
-  border-radius: 12px;
-  padding: 15px;
+    background: #151b29;
+    padding: 15px;
+    border-radius: 12px;
 }
 
-.canal-icon {
-  font-size: 40px;
-  margin-bottom: 8px;
-}
-
-.canal h3 {
-  margin: 5px 0;
-}
-
-.canal p {
-  color: #9ca3af;
-  font-size: 14px;
-  min-height: 35px;
-}
-
-.assistir {
-  background: #2563eb;
-  color: white;
-  width: 100%;
+.canal button {
+    width: 100%;
 }
 
 .favorito {
-  background: #374151;
-  color: white;
-  width: 100%;
-  margin-top: 7px;
-}
-
-.vazio {
-  background: #111827;
-  padding: 25px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-@media (max-width: 600px) {
-  .info {
-    grid-template-columns: 1fr;
-  }
-
-  .container {
-    padding: 12px;
-  }
+    background: #374151;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-
 <div id="login">
 
-  <div class="login-box">
+    <div class="caixa">
 
-    <h1>📺 IPTV BR</h1>
+        <h1>📺 IPTV BR</h1>
+        <p>Área do Cliente</p>
 
-    <p>Área do Cliente</p>
+        <input
+            id="usuario"
+            type="text"
+            placeholder="Usuário"
+        >
 
-    <input
-      type="text"
-      id="usuario"
-      placeholder="Usuário"
-      autocomplete="off"
-    >
+        <input
+            id="senha"
+            type="password"
+            placeholder="Senha"
+        >
 
-    <input
-      type="password"
-      id="senha"
-      placeholder="Senha"
-      autocomplete="off"
-    >
+        <button id="botaoEntrar" type="button">
+            ENTRAR
+        </button>
 
-    <button class="login-button" onclick="entrar()">
-      Entrar
-    </button>
+        <div id="erro"></div>
 
-    <div id="erro"></div>
-
-  </div>
+    </div>
 
 </div>
 
 
-<!-- ÁREA DO CLIENTE -->
+<div id="area">
 
-<div id="cliente">
+    <header>
+        <strong>📺 IPTV BR</strong>
 
-<header>
+        <button class="sair" id="botaoSair" type="button">
+            Sair
+        </button>
+    </header>
 
-  <div class="logo">📺 IPTV BR</div>
+    <div class="conteudo">
 
-  <button class="logout" onclick="sair()">
-    Sair
-  </button>
+        <div class="info">
+            <h2>👋 Bem-vindo!</h2>
+            <p><strong>Plano:</strong> Premium</p>
+            <p><strong>Validade:</strong> 30/12/2026</p>
+            <p><strong>Status:</strong> 🟢 Ativo</p>
+        </div>
 
-</header>
+        <h2 id="titulo">▶️ Selecione um canal</h2>
 
-<div class="container">
+        <video id="player" controls playsinline></video>
 
-  <div class="info">
+        <div class="categorias">
 
-    <div class="info-card">
-      <strong>Plano</strong>
-      Premium
+            <button type="button" onclick="mostrar('Todos')">
+                ⭐ Todos
+            </button>
+
+            <button type="button" onclick="mostrar('TV Aberta')">
+                📺 TV Aberta
+            </button>
+
+            <button type="button" onclick="mostrar('Filmes')">
+                🎬 Filmes
+            </button>
+
+            <button type="button" onclick="mostrar('Séries')">
+                📺 Séries
+            </button>
+
+            <button type="button" onclick="mostrar('Esportes')">
+                ⚽ Esportes
+            </button>
+
+            <button type="button" onclick="mostrar('Notícias')">
+                📰 Notícias
+            </button>
+
+            <button type="button" onclick="mostrar('Música')">
+                🎵 Música
+            </button>
+
+            <button type="button" onclick="mostrar('Infantil')">
+                👶 Infantil
+            </button>
+
+            <button type="button" onclick="mostrar('Todos')">
+                ❤️ Favoritos
+            </button>
+
+        </div>
+
+        <div id="canais" class="canais"></div>
+
     </div>
-
-    <div class="info-card">
-      <strong>Validade</strong>
-      30/12/2026
-    </div>
-
-    <div class="info-card">
-      <strong>Status</strong>
-      🟢 Ativo
-    </div>
-
-  </div>
-
-
-  <!-- PLAYER -->
-
-  <div class="player">
-
-    <h2 id="tituloPlayer">
-      ▶️ Selecione um canal
-    </h2>
-
-    <video
-      id="player"
-      controls
-      playsinline
-    ></video>
-
-  </div>
-
-
-  <!-- PESQUISA -->
-
-  <input
-    class="search"
-    type="text"
-    id="pesquisa"
-    placeholder="🔎 Pesquisar canal..."
-    oninput="mostrarCanais()"
-  >
-
-
-  <!-- CATEGORIAS -->
-
-  <div class="categorias">
-
-    <button class="ativo" onclick="categoria('Todos', this)">
-      ⭐ Todos
-    </button>
-
-    <button onclick="categoria('TV Aberta', this)">
-      📺 TV Aberta
-    </button>
-
-    <button onclick="categoria('Notícias', this)">
-      📰 Notícias
-    </button>
-
-    <button onclick="categoria('Filmes', this)">
-      🎬 Filmes
-    </button>
-
-    <button onclick="categoria('Séries', this)">
-      📺 Séries
-    </button>
-
-    <button onclick="categoria('Esportes', this)">
-      ⚽ Esportes
-    </button>
-
-    <button onclick="categoria('Música', this)">
-      🎵 Música
-    </button>
-
-    <button onclick="categoria('Infantil', this)">
-      👶 Infantil
-    </button>
-
-    <button onclick="categoria('Documentários', this)">
-      🌎 Documentários
-    </button>
-
-    <button onclick="categoria('Entretenimento', this)">
-      🎭 Entretenimento
-    </button>
-
-    <button onclick="categoria('Games', this)">
-      🎮 Games
-    </button>
-
-    <button onclick="categoria('Ao Vivo', this)">
-      🔴 Ao Vivo
-    </button>
-
-    <button onclick="categoria('Favoritos', this)">
-      ❤️ Favoritos
-    </button>
-
-  </div>
-
-  <br>
-
-  <div id="canais" class="canais"></div>
-
-</div>
 
 </div>
 
 
 <script>
 
-/* =========================
-   CONFIGURAÇÃO
-========================= */
-
-const VIDEO_DEMO =
+var videoDemo =
 "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4";
 
 
-/* =========================
-   CANAIS
-========================= */
+var canais = [
 
-const canais = [
-
-  {
-    nome: "TV Demonstração",
-    categoria: "TV Aberta",
-    icone: "📺",
-    descricao: "Canal demonstrativo",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Notícias Demonstração",
-    categoria: "Notícias",
-    icone: "📰",
-    descricao: "Notícias demonstrativas",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Filme Demonstração 1",
-    categoria: "Filmes",
-    icone: "🎬",
-    descricao: "Filme demonstrativo",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Filme Demonstração 2",
-    categoria: "Filmes",
-    icone: "🎥",
-    descricao: "Filme demonstrativo",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Série Demonstração 1",
-    categoria: "Séries",
-    icone: "📺",
-    descricao: "Série demonstrativa",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Série Demonstração 2",
-    categoria: "Séries",
-    icone: "🎞️",
-    descricao: "Série demonstrativa",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Esporte Demonstração",
-    categoria: "Esportes",
-    icone: "⚽",
-    descricao: "Esporte demonstrativo",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Música Demonstração",
-    categoria: "Música",
-    icone: "🎵",
-    descricao: "Música demonstrativa",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Infantil Demonstração",
-    categoria: "Infantil",
-    icone: "👶",
-    descricao: "Conteúdo infantil demonstrativo",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Documentário Demonstração",
-    categoria: "Documentários",
-    icone: "🌎",
-    descricao: "Documentário demonstrativo",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Entretenimento Demonstração",
-    categoria: "Entretenimento",
-    icone: "🎭",
-    descricao: "Entretenimento demonstrativo",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Games Demonstração",
-    categoria: "Games",
-    icone: "🎮",
-    descricao: "Games demonstrativos",
-    video: VIDEO_DEMO
-  },
-
-  {
-    nome: "Ao Vivo Demonstração",
-    categoria: "Ao Vivo",
-    icone: "🔴",
-    descricao: "Canal ao vivo demonstrativo",
-    video: VIDEO_DEMO
-  }
+    ["TV Demonstração", "TV Aberta", "📺"],
+    ["Notícias Demonstração", "Notícias", "📰"],
+    ["Filme Demonstração", "Filmes", "🎬"],
+    ["Série Demonstração", "Séries", "📺"],
+    ["Esporte Demonstração", "Esportes", "⚽"],
+    ["Música Demonstração", "Música", "🎵"],
+    ["Infantil Demonstração", "Infantil", "👶"],
+    ["Documentário Demonstração", "Documentários", "🌎"],
+    ["Entretenimento Demonstração", "Entretenimento", "🎭"],
+    ["Games Demonstração", "Games", "🎮"]
 
 ];
 
 
-/* =========================
-   VARIÁVEIS
-========================= */
+document.getElementById("botaoEntrar").onclick = function() {
 
-let categoriaAtual = "Todos";
+    var usuario =
+        document.getElementById("usuario").value.trim();
 
-let favoritos =
-  JSON.parse(localStorage.getItem("iptvFavoritos") || "[]");
+    var senha =
+        document.getElementById("senha").value.trim();
 
+    if (usuario === "cliente" && senha === "1234") {
 
-/* =========================
-   LOGIN
-========================= */
+        document.getElementById("login").style.display = "none";
 
-function entrar() {
+        document.getElementById("area").style.display = "block";
 
-  const usuario =
-    document.getElementById("usuario").value.trim();
+        document.getElementById("erro").innerHTML = "";
 
-  const senha =
-    document.getElementById("senha").value.trim();
+        mostrar("Todos");
 
-  const erro =
-    document.getElementById("erro");
+    } else {
 
+        document.getElementById("erro").innerHTML =
+            "❌ Usuário ou senha incorretos.";
 
-  if (usuario === "cliente" && senha === "1234") {
+    }
 
-    document.getElementById("login").style.display = "none";
-
-    document.getElementById("cliente").style.display = "block";
-
-    erro.textContent = "";
-
-    mostrarCanais();
-
-  } else {
-
-    erro.textContent =
-      "❌ Usuário ou senha incorretos.";
-
-  }
-
-}
+};
 
 
-/* =========================
-   ENTER NO LOGIN
-========================= */
+document.getElementById("senha").onkeydown = function(event) {
 
-document.addEventListener("DOMContentLoaded", function() {
+    if (event.key === "Enter") {
 
-  document.getElementById("senha")
-    .addEventListener("keydown", function(event) {
+        document.getElementById("botaoEntrar").click();
 
-      if (event.key === "Enter") {
-        entrar();
-      }
+    }
 
-    });
-
-});
+};
 
 
-/* =========================
-   SAIR
-========================= */
+document.getElementById("botaoSair").onclick = function() {
 
-function sair() {
+    document.getElementById("area").style.display = "none";
 
-  document.getElementById("cliente").style.display = "none";
+    document.getElementById("login").style.display = "flex";
 
-  document.getElementById("login").style.display = "flex";
+    document.getElementById("usuario").value = "";
 
-  document.getElementById("usuario").value = "";
+    document.getElementById("senha").value = "";
 
-  document.getElementById("senha").value = "";
-
-  document.getElementById("erro").textContent = "";
-
-  document.getElementById("player").pause();
-
-}
+};
 
 
-/* =========================
-   CATEGORIA
-========================= */
+function mostrar(categoria) {
 
-function categoria(nome, botao) {
+    var area =
+        document.getElementById("canais");
 
-  categoriaAtual = nome;
+    area.innerHTML = "";
 
-  document
-    .querySelectorAll(".categorias button")
-    .forEach(function(btn) {
+    for (var i = 0; i < canais.length; i++) {
 
-      btn.classList.remove("ativo");
+        if (
+            categoria === "Todos" ||
+            canais[i][1] === categoria
+        ) {
 
-    });
+            var card =
+                document.createElement("div");
 
-  botao.classList.add("ativo");
+            card.className = "canal";
 
-  mostrarCanais();
+            card.innerHTML =
+                "<div style='font-size:40px'>" +
+                canais[i][2] +
+                "</div>" +
+
+                "<h3>" +
+                canais[i][0] +
+                "</h3>" +
+
+                "<p>" +
+                canais[i][1] +
+                "</p>" +
+
+                "<button type='button' onclick='assistir(" +
+                i +
+                ")'>▶️ Assistir</button>" +
+
+                "<button type='button' class='favorito'>" +
+                "❤️ Favoritar</button>";
+
+            area.appendChild(card);
+
+        }
+
+    }
 
 }
 
 
-/* =========================
-   MOSTRAR CANAIS
-========================= */
+function assistir(numero) {
 
-function mostrarCanais() {
+    document.getElementById("titulo").innerHTML =
+        "▶️ " + canais[numero][0];
 
-  const area =
-    document.getElementById("canais");
+    var player =
+        document.getElementById("player");
 
-  const pesquisa =
-    document.getElementById("pesquisa")
-      .value
-      .toLowerCase()
-      .trim();
+    player.src = videoDemo;
 
+    player.load();
 
-  let lista = canais.filter(function(canal) {
+    player.play().catch(function() {});
 
-    const pertenceCategoria =
-      categoriaAtual === "Todos" ||
-      canal.categoria === categoriaAtual ||
-      (
-        categoriaAtual === "Favoritos" &&
-        favoritos.includes(canal.nome)
-      );
-
-    const pertencePesquisa =
-      canal.nome.toLowerCase().includes(pesquisa);
-
-    return pertenceCategoria && pertencePesquisa;
-
-  });
-
-
-  if (lista.length === 0) {
-
-    area.innerHTML =
-      '<div class="vazio">Nenhum canal encontrado.</div>';
-
-    return;
-
-  }
-
-
-  area.innerHTML = "";
-
-
-  lista.forEach(function(canal) {
-
-    const originalIndex =
-      canais.indexOf(canal);
-
-    const favorito =
-      favoritos.includes(canal.nome);
-
-
-    const card =
-      document.createElement("div");
-
-    card.className = "canal";
-
-
-    card.innerHTML = `
-
-      <div class="canal-icon">
-        ${canal.icone}
-      </div>
-
-      <h3>${canal.nome}</h3>
-
-      <p>${canal.descricao}</p>
-
-      <button
-        class="assistir"
-        onclick="assistir(${originalIndex})"
-      >
-        ▶️ Assistir
-      </button>
-
-      <button
-        class="favorito"
-        onclick="favoritar('${canal.nome.replace(/'/g, "\\'")}')"
-      >
-        ${favorito ? "❤️ Favoritado" : "🤍 Favoritar"}
-      </button>
-
-    `;
-
-
-    area.appendChild(card);
-
-  });
-
-}
-
-
-/* =========================
-   ASSISTIR
-========================= */
-
-function assistir(index) {
-
-  const canal = canais[index];
-
-  const player =
-    document.getElementById("player");
-
-  const titulo =
-    document.getElementById("tituloPlayer");
-
-
-  titulo.textContent =
-    "▶️ " + canal.nome;
-
-
-  player.src = canal.video;
-
-  player.load();
-
-  player.play().catch(function() {});
-
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-}
-
-
-/* =========================
-   FAVORITOS
-========================= */
-
-function favoritar(nome) {
-
-  if (favoritos.includes(nome)) {
-
-    favoritos =
-      favoritos.filter(function(item) {
-        return item !== nome;
-      });
-
-  } else {
-
-    favoritos.push(nome);
-
-  }
-
-
-  localStorage.setItem(
-    "iptvFavoritos",
-    JSON.stringify(favoritos)
-  );
-
-
-  mostrarCanais();
+    window.scrollTo(0, 0);
 
 }
 

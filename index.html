@@ -62,7 +62,8 @@ body {
   height: auto;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 13px;
   margin: 7px 0;
@@ -148,24 +149,64 @@ button:hover {
   border-radius: 10px;
   margin-top: 10px;
 }
+
+.channel-item {
+  background: #292929;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.channel-item button {
+  margin: 0;
+}
+
+.btn-globo {
+  background: #e50914;
+}
+
+.btn-premiere {
+  background: #c90000;
+}
+
+.info {
+  color: #bbb;
+  font-size: 14px;
+  margin-top: 8px;
+}
 </style>
 </head>
 
 <body>
+
+<!-- LOGIN -->
 
 <div id="loginPage" class="login-page">
 
   <div class="login-box">
 
     <div class="logo">
-      <img src="arquivo_00000000fecc820eacac196cdea695a3.png" alt="IPTV BR">
+      <img
+        src="arquivo_00000000fecc820eacac196cdea695a3.png"
+        alt="IPTV BR">
     </div>
 
     <h2>Entrar</h2>
 
-    <input type="text" id="username" placeholder="Usuário">
+    <input
+      type="text"
+      id="username"
+      placeholder="Usuário">
 
-    <input type="password" id="password" placeholder="Senha">
+    <input
+      type="password"
+      id="password"
+      placeholder="Senha">
 
     <button onclick="login()">Entrar</button>
 
@@ -176,15 +217,22 @@ button:hover {
 </div>
 
 
+<!-- PAINEL -->
+
 <div id="panelPage" class="hidden">
 
   <div class="container">
 
     <div class="header">
+
       <h1>IPTV BR</h1>
+
       <button onclick="logout()">Sair</button>
+
     </div>
 
+
+    <!-- PLANOS -->
 
     <div class="card">
 
@@ -195,25 +243,40 @@ button:hover {
       <div class="plans">
 
         <div class="plan">
+
           <h3>Básico</h3>
+
           <br>
+
           <p>Plano mensal</p>
+
           <br>
+
           <strong>R$ 25,00</strong>
+
         </div>
 
+
         <div class="plan">
+
           <h3>Premium</h3>
+
           <br>
+
           <p>Plano mensal</p>
+
           <br>
+
           <strong>R$ 40,00</strong>
+
         </div>
 
       </div>
 
     </div>
 
+
+    <!-- CATEGORIAS -->
 
     <div class="card">
 
@@ -223,59 +286,73 @@ button:hover {
 
       <div class="categories">
 
-        <div class="category" onclick="showCategory('Esportes')">
+        <div class="category"
+             onclick="showCategory('Esportes')">
           ⚽<br>Esportes
         </div>
 
-        <div class="category" onclick="showCategory('Filmes')">
+        <div class="category"
+             onclick="showCategory('Filmes')">
           🎬<br>Filmes
         </div>
 
-        <div class="category" onclick="showCategory('Series')">
+        <div class="category"
+             onclick="showCategory('Series')">
           📺<br>Séries
         </div>
 
-        <div class="category" onclick="showCategory('Noticias')">
+        <div class="category"
+             onclick="showCategory('Noticias')">
           📰<br>Notícias
         </div>
 
-        <div class="category" onclick="showCategory('Infantil')">
+        <div class="category"
+             onclick="showCategory('Infantil')">
           👶<br>Infantil
         </div>
 
-        <div class="category" onclick="showCategory('Musica')">
+        <div class="category"
+             onclick="showCategory('Musica')">
           🎵<br>Música
         </div>
 
-        <div class="category" onclick="showCategory('Internacionais')">
+        <div class="category"
+             onclick="showCategory('Internacionais')">
           🌎<br>Internacionais
         </div>
 
-        <div class="category" onclick="showCategory('Entretenimento')">
+        <div class="category"
+             onclick="showCategory('Entretenimento')">
           🎭<br>Entretenimento
         </div>
 
-        <div class="category" onclick="showCategory('Culinaria')">
+        <div class="category"
+             onclick="showCategory('Culinaria')">
           🍳<br>Culinária
         </div>
 
-        <div class="category" onclick="showCategory('Tecnologia')">
+        <div class="category"
+             onclick="showCategory('Tecnologia')">
           💻<br>Tecnologia
         </div>
 
-        <div class="category" onclick="showCategory('Documentarios')">
+        <div class="category"
+             onclick="showCategory('Documentarios')">
           🌿<br>Documentários
         </div>
 
-        <div class="category" onclick="showCategory('Religiosos')">
+        <div class="category"
+             onclick="showCategory('Religiosos')">
           🙏<br>Religiosos
         </div>
 
-        <div class="category" onclick="showCategory('Educacao')">
+        <div class="category"
+             onclick="showCategory('Educacao')">
           🎓<br>Educação
         </div>
 
-        <div class="category" onclick="showCategory('Variedades')">
+        <div class="category"
+             onclick="showCategory('Variedades')">
           🏠<br>Variedades
         </div>
 
@@ -285,6 +362,8 @@ button:hover {
 
     </div>
 
+
+    <!-- CADASTRAR CLIENTE -->
 
     <div class="card">
 
@@ -305,6 +384,7 @@ button:hover {
       <select id="clientPlan">
 
         <option value="Básico">Básico</option>
+
         <option value="Premium">Premium</option>
 
       </select>
@@ -321,6 +401,8 @@ button:hover {
 
     </div>
 
+
+    <!-- CLIENTES -->
 
     <div class="card">
 
@@ -343,6 +425,8 @@ const PASS = "1234";
 let clients =
 JSON.parse(localStorage.getItem("iptvClients")) || [];
 
+
+/* LOGIN */
 
 function login() {
 
@@ -379,6 +463,8 @@ function login() {
 }
 
 
+/* LOGOUT */
+
 function logout() {
 
   document
@@ -390,10 +476,13 @@ function logout() {
   .classList.remove("hidden");
 
   document.getElementById("username").value = "";
+
   document.getElementById("password").value = "";
 
 }
 
+
+/* CADASTRAR CLIENTE */
 
 function addClient() {
 
@@ -450,7 +539,9 @@ function addClient() {
 
 
   document.getElementById("clientName").value = "";
+
   document.getElementById("clientPhone").value = "";
+
   document.getElementById("clientDate").value = "";
 
 
@@ -465,10 +556,14 @@ function addClient() {
 }
 
 
+/* EXCLUIR CLIENTE */
+
 function deleteClient(id) {
 
   if (!confirm("Deseja excluir este cliente?")) {
+
     return;
+
   }
 
 
@@ -486,6 +581,8 @@ function deleteClient(id) {
 
 }
 
+
+/* MOSTRAR CLIENTES */
 
 function renderClients() {
 
@@ -517,13 +614,25 @@ function renderClients() {
 
     div.innerHTML = `
 
-      <p><strong>Nome:</strong> ${client.name}</p>
+      <p>
+        <strong>Nome:</strong>
+        ${client.name}
+      </p>
 
-      <p><strong>Telefone:</strong> ${client.phone}</p>
+      <p>
+        <strong>Telefone:</strong>
+        ${client.phone}
+      </p>
 
-      <p><strong>Plano:</strong> ${client.plan}</p>
+      <p>
+        <strong>Plano:</strong>
+        ${client.plan}
+      </p>
 
-      <p><strong>Vencimento:</strong> ${client.date}</p>
+      <p>
+        <strong>Vencimento:</strong>
+        ${client.date}
+      </p>
 
       <button
         class="btn-danger"
@@ -542,6 +651,8 @@ function renderClients() {
 
 }
 
+
+/* CATEGORIAS */
 
 function showCategory(category) {
 
@@ -568,6 +679,419 @@ function showCategory(category) {
 
   };
 
+
+  /* ESPORTES */
+
+  if (category === "Esportes") {
+
+    content.innerHTML = `
+
+      <div class="channel">
+
+        <h3>⚽ Esportes</h3>
+
+        <p class="info">
+          Acessos oficiais de conteúdo esportivo.
+        </p>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🔴 Premiere</strong>
+
+            <p class="info">
+              Acesse o Premiere oficial da Globo.
+            </p>
+          </div>
+
+          <a
+            href="https://premiere.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-premiere">
+              ▶ Premiere Globo
+            </button>
+
+          </a>
+
+        </div>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🏆 sportv</strong>
+
+            <p class="info">
+              Conteúdo esportivo da Globo.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Abrir Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🏆 sportv 2</strong>
+
+            <p class="info">
+              Canal esportivo.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🏆 sportv 3</strong>
+
+            <p class="info">
+              Canal esportivo.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* NOTÍCIAS */
+
+  if (category === "Noticias") {
+
+    content.innerHTML = `
+
+      <div class="channel">
+
+        <h3>📰 Notícias</h3>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>📰 GloboNews</strong>
+
+            <p class="info">
+              Notícias e informação.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* INFANTIL */
+
+  if (category === "Infantil") {
+
+    content.innerHTML = `
+
+      <div class="channel">
+
+        <h3>👶 Infantil</h3>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🌈 Gloob</strong>
+
+            <p class="info">
+              Conteúdo infantil.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🌈 Gloobinho</strong>
+
+            <p class="info">
+              Conteúdo infantil.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* ENTRETENIMENTO */
+
+  if (category === "Entretenimento") {
+
+    content.innerHTML = `
+
+      <div class="channel">
+
+        <h3>🎭 Entretenimento</h3>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>📺 TV Globo</strong>
+
+            <p class="info">
+              Conteúdo da TV Globo.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🎤 Multishow</strong>
+
+            <p class="info">
+              Música e entretenimento.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🎭 GNT</strong>
+
+            <p class="info">
+              Entretenimento, culinária e variedades.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🎬 Globoplay Novelas</strong>
+
+            <p class="info">
+              Novelas e conteúdos de dramaturgia.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* FILMES */
+
+  if (category === "Filmes") {
+
+    content.innerHTML = `
+
+      <div class="channel">
+
+        <h3>🎬 Filmes</h3>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🎬 Canal Brasil</strong>
+
+            <p class="info">
+              Filmes e produções brasileiras.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+
+        <div class="channel-item">
+
+          <div>
+            <strong>🎬 Megapix</strong>
+
+            <p class="info">
+              Canal de filmes.
+            </p>
+          </div>
+
+          <a
+            href="https://globoplay.globo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <button class="btn-globo">
+              ▶ Globoplay
+            </button>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* OUTRAS CATEGORIAS */
 
   content.innerHTML = `
 

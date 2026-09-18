@@ -148,13 +148,10 @@ button:hover {
   border-radius: 10px;
   margin-top: 10px;
 }
-
 </style>
 </head>
 
 <body>
-
-<!-- LOGIN -->
 
 <div id="loginPage" class="login-page">
 
@@ -166,15 +163,9 @@ button:hover {
 
     <h2>Entrar</h2>
 
-    <input
-      type="text"
-      id="username"
-      placeholder="Usuário">
+    <input type="text" id="username" placeholder="Usuário">
 
-    <input
-      type="password"
-      id="password"
-      placeholder="Senha">
+    <input type="password" id="password" placeholder="Senha">
 
     <button onclick="login()">Entrar</button>
 
@@ -185,22 +176,15 @@ button:hover {
 </div>
 
 
-<!-- PAINEL -->
-
 <div id="panelPage" class="hidden">
 
   <div class="container">
 
     <div class="header">
-
       <h1>IPTV BR</h1>
-
       <button onclick="logout()">Sair</button>
-
     </div>
 
-
-    <!-- PLANOS -->
 
     <div class="card">
 
@@ -230,8 +214,6 @@ button:hover {
 
     </div>
 
-
-    <!-- CATEGORIAS -->
 
     <div class="card">
 
@@ -304,8 +286,6 @@ button:hover {
     </div>
 
 
-    <!-- CADASTRO -->
-
     <div class="card">
 
       <h2>👤 Cadastrar Cliente</h2>
@@ -342,8 +322,6 @@ button:hover {
     </div>
 
 
-    <!-- CLIENTES -->
-
     <div class="card">
 
       <h2>👥 Clientes</h2>
@@ -369,7 +347,7 @@ JSON.parse(localStorage.getItem("iptvClients")) || [];
 function login() {
 
   const username =
-  document.getElementById("username").value;
+  document.getElementById("username").value.trim();
 
   const password =
   document.getElementById("password").value;
@@ -386,6 +364,8 @@ function login() {
     document
     .getElementById("panelPage")
     .classList.remove("hidden");
+
+    message.textContent = "";
 
     renderClients();
 
@@ -572,31 +552,18 @@ function showCategory(category) {
   const names = {
 
     Esportes: "⚽ Esportes",
-
     Filmes: "🎬 Filmes",
-
     Series: "📺 Séries",
-
     Noticias: "📰 Notícias",
-
     Infantil: "👶 Infantil",
-
     Musica: "🎵 Música",
-
     Internacionais: "🌎 Internacionais",
-
     Entretenimento: "🎭 Entretenimento",
-
     Culinaria: "🍳 Culinária",
-
     Tecnologia: "💻 Tecnologia",
-
     Documentarios: "🌿 Documentários",
-
     Religiosos: "🙏 Religiosos",
-
     Educacao: "🎓 Educação",
-
     Variedades: "🏠 Variedades"
 
   };

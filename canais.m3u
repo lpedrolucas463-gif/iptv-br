@@ -1,0 +1,7 @@
+#EXTM3U
+
+#EXTINF:-1 tvg-name="TV Câmara",TV Câmara
+https://stream3.camara.gov.br/tv1/manifest.m3u8
+
+#EXTINF:-1 tvg-name="TV Câmara 2",TV Câmara 2
+https://stream3.camara.gov.br/tv2/manifest.m3u8
